@@ -1,0 +1,233 @@
+/* Enhanced Dashboard Styles */
+.text-gradient {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.modern-card {
+    border: none;
+    border-radius: 0px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.modern-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px -5px rgba(0, 0, 0, 0.15);
+}
+
+.stat-card {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.stat-progress {
+    height: 4px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 2px;
+    margin: 1rem 0 0.5rem;
+    overflow: hidden;
+}
+
+.progress-bar {
+    height: 100%;
+    border-radius: 2px;
+    transition: width 0.6s ease;
+}
+
+.progress-bar.danger {
+    background: #dc3545;
+}
+
+.progress-bar.warning {
+    background: #ffc107;
+}
+
+.progress-bar.info {
+    background: #17a2b8;
+}
+
+.progress-bar.success {
+    background: #28a745;
+}
+
+.stat-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.875rem;
+    margin-top: 0.5rem;
+}
+
+.animate-fade-in {
+    animation: fadeInUp 0.6s ease forwards;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.quick-actions-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+}
+
+.quick-action-card {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.5rem;
+    border: 2px solid transparent;
+    border-radius: 12px;
+    background: var(--bs-body-bg);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.quick-action-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px -5px rgba(0, 0, 0, 0.15);
+    text-decoration: none;
+}
+
+.quick-action-card.primary:hover {
+    border-color: #007bff;
+}
+
+.quick-action-card.warning:hover {
+    border-color: #ffc107;
+}
+
+.quick-action-card.success:hover {
+    border-color: #28a745;
+}
+
+.quick-action-card.info:hover {
+    border-color: #17a2b8;
+}
+
+.quick-action-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    color: white;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.feature-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1.5rem;
+    border: 2px solid rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    background: var(--bs-body-bg);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.feature-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px -5px rgba(0, 0, 0, 0.15);
+    text-decoration: none;
+}
+
+.feature-card.danger:hover {
+    border-color: #dc3545;
+}
+
+.feature-card.warning:hover {
+    border-color: #ffc107;
+}
+
+.feature-card.info:hover {
+    border-color: #17a2b8;
+}
+
+.feature-card.success:hover {
+    border-color: #28a745;
+}
+
+.feature-card.primary:hover {
+    border-color: #007bff;
+}
+
+.feature-card.secondary:hover {
+    border-color: #6c757d;
+}
+
+.feature-card.dark:hover {
+    border-color: #343a40;
+}
+
+.feature-card i {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.transaction-item {
+    transition: all 0.3s ease;
+}
+
+.transaction-item:hover {
+    background: rgba(0, 0, 0, 0.02);
+    transform: translateX(5px);
+}
+
+.transaction-item:hover .transaction-icon {
+    transform: scale(1.1);
+}
+
+.ripple-effect {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: scale(0);
+    animation: ripple 0.6s ease-out;
+    pointer-events: none;
+}
+
+@keyframes ripple {
+    to {
+        transform: scale(2);
+        opacity: 0;
+    }
+}
+
+/* Dark mode improvements */
+[data-bs-theme="dark"] .modern-card {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+[data-bs-theme="dark"] .quick-action-card,
+[data-bs-theme="dark"] .feature-card {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+[data-bs-theme="dark"] .transaction-item:hover {
+    background: rgba(255, 255, 255, 0.05);
+}
