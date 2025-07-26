@@ -2,6 +2,7 @@ import './assets/css/dashboard.css';
 import React, { useState } from 'react';
 import DashboardPage from './pages/Dashboard/DashboardPage';
 import FavoriUrunlerPage from './pages/FavoriUrunlerPage';
+import IcraDosyalariPage from './pages/IcraDosyalariPage';
 import Header from './components/layout/Header';
 import Sidebar from './components/layout/Sidebar';
 import Footer from './components/layout/Footer';
@@ -40,6 +41,7 @@ function App() {
         <main className="flex-1 pt-4 pb-4 pr-4 pl-0">
           {activePage === 'dashboard' && <DashboardPage />}
           {activePage === 'favori-urunler' && <FavoriUrunlerPage />}
+          {activePage === 'icra-dosyalari' && <IcraDosyalariPage />}
         </main>
         <Footer />
       </div>

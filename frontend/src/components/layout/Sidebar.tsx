@@ -25,16 +25,6 @@ const menuItems: MenuItem[] = [
       { label: 'To-Do List' },
       { label: 'Okuma Listesi' },
       { label: 'Notlar' },
-      {
-        label: 'Hukuk',
-        icon: FiBook,
-        subItems: [
-          { label: 'Dosyalar' },
-          { label: 'Hukuk Notları' },
-          { label: 'Davalar' },
-          { label: 'İcralar' },
-        ]
-      },
       { label: 'Projeler', icon: FiFolder }
     ],
   },
@@ -66,20 +56,21 @@ const menuItems: MenuItem[] = [
         label: 'Akademik',
         icon: FiBookOpen,
         subItems: [
-          {
-            label: 'Hukuk',
-            icon: FiBook,
-            subItems: [
-              { label: 'Dosyalar' },
-              { label: 'Hukuk Notları' },
-              { label: 'Davalar' },
-              { label: 'İcralar' },
-            ]
-          },
           { label: 'Projeler', icon: FiFolder }
         ]
       }
     ],
+  },
+  {
+    icon: FiBook,
+    label: 'Hukuk',
+    subItems: [
+      { label: 'Ceza Dava Dosyaları' },
+      { label: 'İcra Dosyaları' },
+      { label: 'Hukuk Dava Dosyaları' },
+      { label: 'Savcılık Soruşturmaları' },
+      { label: 'Diğer İşlemler' },
+    ]
   },
   {
     icon: FiPenTool,
@@ -167,6 +158,11 @@ const subMenuIcons: { [key: string]: IconType } = {
   'Videolarım': FiVideo,
   'Yedeklemeler': FiCloud,
   'Medya Sunucusu': FiServer,
+  'Ceza Dava Dosyaları': FiFileText,
+  'İcra Dosyaları': FiFileText,
+  'Hukuk Dava Dosyaları': FiFileText,
+  'Savcılık Soruşturmaları': FiFileText,
+  'Diğer İşlemler': FiFileText,
 };
 
 interface SidebarProps {
@@ -244,7 +240,8 @@ const Sidebar: React.FC<SidebarProps> = ({ mobileOpen = false, setMobileOpen, on
                         <div className="relative">
                           <a
                             href="#"
-                            onClick={() => {
+                            onClick={e => {
+                              e.preventDefault();
                               if (item.label === 'Dashboard' && onNavigate) onNavigate('dashboard');
                               else if (item.subItems) setActiveMenu(activeMenu === item.label ? null : item.label);
                             }}
@@ -265,6 +262,7 @@ const Sidebar: React.FC<SidebarProps> = ({ mobileOpen = false, setMobileOpen, on
                                     href="#"
                                     onClick={() => {
                                       if (subItem.label === 'Favori Ürünler' && onNavigate) onNavigate('favori-urunler');
+                                      if (subItem.label === 'İcra Dosyaları' && onNavigate) onNavigate('icra-dosyalari');
                                     }}
                                     className="flex flex-col items-center justify-center gap-1 px-1 py-3 rounded-lg text-[#e5e7eb] hover:bg-[#23223A] hover:text-white transition-all duration-200 min-h-[70px]"
                                   >
@@ -339,7 +337,11 @@ const Sidebar: React.FC<SidebarProps> = ({ mobileOpen = false, setMobileOpen, on
                 <div className="relative">
                   <a
                     href="#"
-                    onClick={() => item.subItems && !collapsed && setActiveMenu(activeMenu === item.label ? null : item.label)}
+                    onClick={e => {
+                      e.preventDefault();
+                      if (item.label === 'Dashboard' && onNavigate) onNavigate('dashboard');
+                      else if (item.subItems && !collapsed) setActiveMenu(activeMenu === item.label ? null : item.label);
+                    }}
                     className={`flex items-center gap-3 ${collapsed ? 'justify-center px-0' : 'px-6'} py-3 rounded-xl font-medium transition-all duration-200
                       ${activeMenu === item.label && !collapsed ? 'bg-[#23223A] text-white shadow-md' : 'text-[#e5e7eb] hover:bg-[#23223A] hover:text-white'}
                       ${item.subItems && item.subItems.length > 0 ? 'cursor-pointer' : ''}`}
@@ -359,6 +361,7 @@ const Sidebar: React.FC<SidebarProps> = ({ mobileOpen = false, setMobileOpen, on
                             href="#"
                                 onClick={() => {
                                   if (subItem.label === 'Favori Ürünler' && onNavigate) onNavigate('favori-urunler');
+                                  if (subItem.label === 'İcra Dosyaları' && onNavigate) onNavigate('icra-dosyalari');
                                 }}
                             className="flex flex-col items-center justify-center gap-1 px-1 py-3 rounded-lg text-[#e5e7eb] hover:bg-[#23223A] hover:text-white transition-all duration-200 min-h-[70px]"
                           >

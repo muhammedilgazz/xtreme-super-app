@@ -1,6 +1,8 @@
 import React, { useState, useMemo, useRef, useEffect, DragEvent } from 'react';
 import { FiFileText, FiHome, FiDollarSign, FiTarget, FiSettings, FiPlusCircle, FiFilter, FiMoreVertical, FiBell, FiLifeBuoy, FiBookOpen, FiPenTool, FiCalendar, FiFilm, FiShoppingBag, FiX, FiHeart, FiSearch, FiTag, FiShoppingCart, FiStar, FiClock, FiList, FiPlus, FiEdit3 } from 'react-icons/fi';
 import { IconType } from 'react-icons';
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css';
 
 interface Urun {
   id: number;
@@ -677,15 +679,29 @@ const UrunFormModal: React.FC<UrunFormModalProps> = ({ isOpen, onClose, onSave, 
   const [yeniResimUrl, setYeniResimUrl] = useState('');
   
   useEffect(() => {
-    if (isOpen && initialData) {
-      setIsim(initialData.isim || '');
-      setFiyat(initialData.fiyat || 0);
-      setKategori(initialData.kategori || (kategoriler[0] || ''));
-      setAciklama(initialData.aciklama || '');
-      setEtiketler(initialData.etiketler ? initialData.etiketler.join(', ') : '');
-      setResimler(initialData.resimler || []);
-      setSiteAdi(initialData.siteAdi || '');
-      setSatinAlmaLinki(initialData.satinAlmaLinki || '');
+    if (isOpen) {
+      if (initialData && Object.keys(initialData).length > 0) {
+        // Düzenleme modu
+        setIsim(initialData.isim || '');
+        setFiyat(initialData.fiyat || 0);
+        setKategori(initialData.kategori || (kategoriler[0] || ''));
+        setAciklama(initialData.aciklama || '');
+        setEtiketler(initialData.etiketler ? initialData.etiketler.join(', ') : '');
+        setResimler(initialData.resimler || []);
+        setSiteAdi(initialData.siteAdi || '');
+        setSatinAlmaLinki(initialData.satinAlmaLinki || '');
+      } else {
+        // Yeni ürün ekleme modu - formu sıfırla
+        setIsim('');
+        setFiyat(0);
+        setKategori(kategoriler[0] || '');
+        setAciklama('');
+        setEtiketler('');
+        setResimler([]);
+        setSiteAdi('');
+        setSatinAlmaLinki('');
+        setYeniResimUrl('');
+      }
     }
   }, [isOpen, initialData, kategoriler]);
   
@@ -779,12 +795,31 @@ const UrunFormModal: React.FC<UrunFormModalProps> = ({ isOpen, onClose, onSave, 
         </div>
         <div>
           <label className="block text-sm font-medium mb-1" style={{ color: renkler.anaYazi }}>Açıklama</label>
-          <textarea 
+          <ReactQuill 
             value={aciklama} 
-            onChange={(e) => setAciklama(e.target.value)} 
-            rows={3} 
-            className="w-full p-2 border rounded-md"
-            required
+            onChange={setAciklama}
+            placeholder="Ürün açıklamasını buraya yazın..."
+            modules={{
+              toolbar: [
+                [{ 'header': [1, 2, 3, false] }],
+                ['bold', 'italic', 'underline', 'strike'],
+                [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+                [{ 'color': [] }, { 'background': [] }],
+                [{ 'align': [] }],
+                ['link', 'image'],
+                ['clean']
+              ],
+            }}
+            formats={[
+              'header',
+              'bold', 'italic', 'underline', 'strike',
+              'list', 'bullet',
+              'color', 'background',
+              'align',
+              'link', 'image'
+            ]}
+            className="w-full"
+            style={{ height: '150px' }}
           />
         </div>
         <div>
@@ -971,7 +1006,10 @@ const FavoriUrunlerPage: React.FC = () => {
     const [fiyatMin, setFiyatMin] = useState(minFiyat);
     const [fiyatMax, setFiyatMax] = useState(maxFiyat);
     const [seciliUrun, setSeciliUrun] = useState<Urun | null>(null);
-    const [kategoriListesi, setKategoriListesi] = useState<string[]>(Array.from(new Set(urunler.map(u => u.kategori))));
+    const [kategoriListesi, setKategoriListesi] = useState<string[]>(() => {
+      const kategoriler = Array.from(new Set(urunler.map(u => u.kategori)));
+      return kategoriler.length > 0 ? kategoriler : ['Genel'];
+    });
     const [urunFormOpen, setUrunFormOpen] = useState(false);
     const [duzenlenenUrun, setDuzenlenenUrun] = useState<Urun | null>(null);
     const [mevcutSayfa, setMevcutSayfa] = useState(1);
@@ -1100,11 +1138,20 @@ const FavoriUrunlerPage: React.FC = () => {
 
     return (
         <div className="space-y-6">
-            <div className="flex flex-wrap items-center justify-between gap-4 mb-2">
+            {/* Breadcrumb */}
+            <nav className="flex items-center space-x-2 text-sm text-gray-500 mb-4 mt-6">
+              <span className="hover:text-gray-700 cursor-pointer">Ana Sayfa</span>
+              <span>/</span>
+              <span className="text-gray-900 font-medium">Favori Ürünler</span>
+            </nav>
+            
+            <div className="mb-2">
               <h2 className="text-3xl font-bold" style={{ color: renkler.anaYazi }}>Favori Ürünler</h2>
+            </div>
+            <div className="flex items-center justify-between gap-4 mb-4">
+              <KategoriYonetimi kategoriler={kategoriListesi} onEkle={kategoriEkle} onSil={kategoriSil} />
               <Buton icon={FiPlus} onClick={() => setUrunFormOpen(true)} className="bg-[#112e4b] hover:bg-[#0a1f2e] text-white">Ürün Ekle</Buton>
             </div>
-            <KategoriYonetimi kategoriler={kategoriListesi} onEkle={kategoriEkle} onSil={kategoriSil} />
 
             {/* Filtreleme Alanı */}
             <Kart baslik="Filtrele" headerAction={<Buton variant="secondary" onClick={() => {setArama(''); setKategori('hepsi'); setTercihEdilenler(false); setSecilenSepet('hepsi'); setFiyatMin(minFiyat); setFiyatMax(maxFiyat);}} className="">Temizle</Buton>}>
