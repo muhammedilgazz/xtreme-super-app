@@ -2,34 +2,58 @@ import React from 'react';
 
 const SummaryCards: React.FC = () => {
   return (
-    <div className="dashboard-summary-row">
-      <div className="summary-card expense position-relative">
-        <span>AYLIK GİDER</span>
-        <h2>₺250,00</h2>
-        <span className="summary-change down">-5.2%</span>
-        <span className="summary-desc">geçen aya göre</span>
-        <i className="bi bi-receipt summary-icon"></i>
+    <div className="col-span-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      {/* Kart 1: Aylık Gider */}
+      <div className="bg-white p-6 rounded-xl shadow-md">
+        <div className="flex justify-between items-center mb-4">
+          <h4 className="text-sm font-semibold text-gray-500">AYLIK GİDER</h4>
+          <i className="fas fa-shopping-bag text-5xl text-red-400" style={{ opacity: 0.7 }}></i>
+        </div>
+        <p className="text-3xl font-bold text-gray-800 mb-2">₺250,00</p>
+        <div className="flex items-center text-sm">
+          <i className="fas fa-arrow-down text-red-500 mr-1 text-xs"></i>
+          <span className="text-red-500 font-semibold text-xs">5%</span>
+          <span className="text-gray-500 ml-auto text-xs">vs. Son ay</span>
+        </div>
       </div>
-      <div className="summary-card receivable position-relative">
-        <span>AYLIK ALINACAKLAR</span>
-        <h2>₺9.102.091,88</h2>
-        <span className="summary-change up">+2.1%</span>
-        <span className="summary-desc">geçen aya göre</span>
-        <i className="bi bi-wallet2 summary-icon"></i>
+      {/* Kart 2: Aylık Alacaklar */}
+      <div className="bg-white p-6 rounded-xl shadow-md">
+        <div className="flex justify-between items-center mb-4">
+          <h4 className="text-sm font-semibold text-gray-500">AYLIK ALACAKLAR</h4>
+          <i className="fas fa-receipt text-5xl text-green-500" style={{ opacity: 0.7 }}></i>
+        </div>
+        <p className="text-3xl font-bold text-gray-800 mb-2">₺9.102.091,88</p>
+        <div className="flex items-center text-sm">
+          <i className="fas fa-arrow-up text-green-500 mr-1 text-xs"></i>
+          <span className="text-green-500 font-semibold text-xs">18%</span>
+          <span className="text-gray-500 ml-auto text-xs">vs. Son ay</span>
+        </div>
       </div>
-      <div className="summary-card payment position-relative">
-        <span>BORÇ ÖDEMELERİ</span>
-        <h2>₺0,00</h2>
-        <span className="summary-change up">+1.8%</span>
-        <span className="summary-desc">geçen aya göre</span>
-        <i className="bi bi-credit-card summary-icon"></i>
+      {/* Kart 3: Borç Ödemeleri */}
+      <div className="bg-white p-6 rounded-xl shadow-md">
+        <div className="flex justify-between items-center mb-4">
+          <h4 className="text-sm font-semibold text-gray-500">BORÇ ÖDEMELERİ</h4>
+          <i className="fas fa-hand-holding-dollar text-5xl text-purple-500" style={{ opacity: 0.7 }}></i>
+        </div>
+        <p className="text-3xl font-bold text-gray-800 mb-2">₺0,00</p>
+        <div className="flex items-center text-sm">
+          <i className="fas fa-arrow-up text-green-500 mr-1 text-xs"></i>
+          <span className="text-green-500 font-semibold text-xs">0%</span>
+          <span className="text-gray-500 ml-auto text-xs">vs. Son ay</span>
+        </div>
       </div>
-      <div className="summary-card balance position-relative">
-        <span>TOPLAM BAKİYE</span>
-        <h2>₺0,00</h2>
-        <span className="summary-change up">+8.5%</span>
-        <span className="summary-desc">geçen aya göre</span>
-        <i className="bi bi-pie-chart summary-icon"></i>
+      {/* Kart 4: Toplam Bakiye */}
+      <div className="bg-white p-6 rounded-xl shadow-md">
+        <div className="flex justify-between items-center mb-4">
+          <h4 className="text-sm font-semibold text-gray-500">TOPLAM BAKİYE</h4>
+          <i className="fas fa-wallet text-5xl text-blue-500" style={{ opacity: 0.7 }}></i>
+        </div>
+        <p className="text-3xl font-bold text-gray-800 mb-2">₺0,00</p>
+        <div className="flex items-center text-sm">
+          <i className="fas fa-arrow-up text-green-500 mr-1 text-xs"></i>
+          <span className="text-green-500 font-semibold text-xs">0%</span>
+          <span className="text-gray-500 ml-auto text-xs">vs. Son ay</span>
+        </div>
       </div>
     </div>
   );

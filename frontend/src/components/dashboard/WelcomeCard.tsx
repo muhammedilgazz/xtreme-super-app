@@ -1,37 +1,19 @@
 import React from 'react';
+import heroImg from '../../assets/images/hero.png';
 
 const WelcomeCard: React.FC = () => {
   return (
-    <div className="dashboard-welcome-row">
-      <div className="welcome-card">
-        <div className="welcome-content">
-          <h3>Bütçe Yönetimine Hoş Geldin</h3>
-          <p>Harcamaların ne durumda, bir bakalım mı?</p>
-          <div className="welcome-actions">
-            <button className="btn btn-light">Account purchase</button>
-            <button className="btn btn-dark">View features</button>
-          </div>
-        </div>
-        <div>
-          <img src="/assets/images/hero.png" alt="Hoş Geldin" className="welcome-hero-img" />
+    <div className="bg-gray-800 rounded-xl p-8 flex items-center justify-between shadow-lg">
+      <div>
+        <h2 className="text-2xl font-bold text-white">Bütçe Yönetimine Hoş Geldin, Muhammed</h2>
+        <p className="text-gray-400 mt-2 mb-6">Harcamaların ne durumda, bir bakalım mı?</p>
+        <div className="flex flex-wrap gap-4">
+          <button className="bg-white text-gray-900 font-semibold py-2 px-5 rounded-lg hover:bg-gray-200 transition-colors shadow-md">Hesap Satın Al</button>
+          <button className="bg-gray-700 text-white font-semibold py-2 px-5 rounded-lg hover:bg-gray-600 transition-colors shadow-md">Özellikleri Gör</button>
         </div>
       </div>
-      <div className="dashboard-graph-card">
-        <div className="cash-header d-flex justify-content-between align-items-start">
-          <div>
-            <div className="cash-title">MEVCUT KASA</div>
-            <div className="cash-date"><span className="cash-time">09:20AM</span> <span className="cash-day">04 Jan</span></div>
-          </div>
-          <div className="cash-change up">▲ 2.89%</div>
-        </div>
-        <div className="cash-amount">₺1,567</div>
-        <div className="cash-progressbar">
-          <div className="cash-progressbar-inner" style={{ width: '80%' }}></div>
-        </div>
-        <div className="d-flex justify-content-between cash-footer">
-          <span className="cash-footer-left">0%</span>
-          <span className="cash-footer-right">8%</span>
-        </div>
+      <div className="hidden lg:block flex-shrink-0">
+        <img src={heroImg} alt="Hoş Geldin" className="w-40 h-40 object-cover rounded-full" />
       </div>
     </div>
   );

@@ -8,6 +8,7 @@ import Charts from '../../components/dashboard/Charts';
 import QuickActions from '../../components/dashboard/QuickActions';
 import AllFeatures from '../../components/dashboard/AllFeatures';
 import QuickActionModal from '../../components/dashboard/QuickActionModal';
+import RecentTransactions from '../../components/dashboard/RecentTransactions';
 
 const DashboardPage: React.FC = () => {
     const [isModalOpen, setModalOpen] = useState(false);
@@ -16,109 +17,78 @@ const DashboardPage: React.FC = () => {
         AOS.init();
     }, []);
 
-    const refreshDashboard = () => {
-        // showInfo('Dashboard yenileniyor...');
-        setTimeout(() => {
-            location.reload();
-        }, 1000);
-    };
-
     return (
-        <div className="app-content">
-            <div className="container-fluid">
-                {/* Enhanced Dashboard Header */}
-                <div className="row mb-4">
-                    <div className="col-12">
-                        <div className="d-flex justify-content-between align-items-center">
+        <div className="p-6 min-h-screen">
+            <div className="max-w-9xl mx-auto flex flex-col gap-6">
+                <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+                    <div>
+                        <h1 className="text-2xl font-bold text-gray-800">Dashboard</h1>
+                        <p className="text-gray-500">Hoş geldin! Finansal durumuna göz at.</p>
+                    </div>
+                    <div className="bg-purple-700 text-white p-4 rounded-lg shadow-lg min-w-[220px]">
+                        <div className="flex justify-between items-center">
                             <div>
-                                <h1 className="h3 mb-0 text-gradient">Dashboard</h1>
-                                <p className="text-muted mb-0">Hoş geldin Muhammed! Bugün senin için harika bir gün. Aşağıda özet bilgilerini bulabilirsin.</p>
+                                <p className="font-bold">Tarragona</p>
+                                <p className="text-xs">Cloudy</p>
                             </div>
-                            <div className="d-flex gap-2">
-                                <button className="btn btn-secondary btn-sm" onClick={refreshDashboard}>
-                                    <i className="material-icons-round">refresh</i>
-                                    Yenile
-                                </button>
-                                <button className="btn btn-primary" onClick={() => setModalOpen(true)}>
-                                    <i className="bi bi-plus-circle me-2"></i>Hızlı Ekle
-                                </button>
+                            <div className="flex items-center">
+                                <p className="text-4xl font-bold">32°</p>
+                                <p className="text-2xl ml-2">☁️</p>
                             </div>
                         </div>
                     </div>
                 </div>
-
-                {/* Yeni Dashboard Welcome ve Özet Bilgiler */}
-                <div className="dashboard-welcome-row" style={{display: 'flex', gap: '24px', marginBottom: '32px'}}>
-                    <div className="welcome-card" style={{flex: 1, display: 'flex', background: '#fff', borderRadius: '16px', boxShadow: '0 4px 16px rgba(0,0,0,0.04)', padding: '32px', alignItems: 'center', justifyContent: 'space-between'}}>
-                        <div className="welcome-content">
-                            <h3>Bütçe Yönetimine Hoş Geldin</h3>
-                            <p>Harcamaların ne durumda, bir bakalım mı?</p>
-                            <div className="welcome-actions" style={{marginTop: '16px', display: 'flex', gap: '12px'}}>
-                                <button className="btn btn-light">Hesap Satın Al</button>
-                                <button className="btn btn-dark">Özellikleri Gör</button>
-                            </div>
-                        </div>
-                        <div>
-                            <img src="/assets/images/hero.png" alt="Hoş Geldin" className="welcome-hero-img" style={{maxWidth: '180px'}} />
-                        </div>
+                {/* Üstte iki kart tam genişlikte yan yana */}
+                <div className="grid grid-cols-1 md:grid-cols-12 gap-6 w-full">
+                    <div className="md:col-span-9">
+                        <WelcomeCard />
                     </div>
-                    <div className="dashboard-graph-card" style={{width: '340px', background: '#fff', borderRadius: '16px', boxShadow: '0 4px 16px rgba(0,0,0,0.04)', padding: '24px'}}>
-                        <div className="cash-header d-flex justify-content-between align-items-start">
-                            <div>
-                                <div className="cash-title">MEVCUT KASA</div>
-                                <div className="cash-date"><span className="cash-time">09:20AM</span> <span className="cash-day">04 Jan</span></div>
+                    <div className="md:col-span-3 h-full flex items-stretch">
+                        <div className="bg-gray-800 text-white p-6 rounded-xl flex flex-col justify-between w-full">
+                            <div className="flex justify-between items-start">
+                                <div>
+                                    <p className="text-xs text-gray-400">MEVCUT KASA</p>
+                                    <p className="text-xs text-gray-500">09:20AM 04 Jan</p>
+                                </div>
+                                <p className="text-green-400 text-sm font-semibold">▲ 2.89%</p>
                             </div>
-                            <div className="cash-change up">▲ 2.89%</div>
-                        </div>
-                        <div className="cash-amount" style={{fontSize: '2rem', fontWeight: 700, margin: '16px 0'}}>₺1,567</div>
-                        <div className="cash-progressbar" style={{height: '8px', background: '#eee', borderRadius: '4px', marginBottom: '8px'}}>
-                            <div className="cash-progressbar-inner" style={{width: '80%', height: '100%', background: 'linear-gradient(90deg, #667eea 0%, #764ba2 100%)', borderRadius: '4px'}}></div>
-                        </div>
-                        <div className="d-flex justify-content-between cash-footer">
-                            <span className="cash-footer-left">0%</span>
-                            <span className="cash-footer-right">8%</span>
+                            <p className="text-3xl font-bold my-3">₺1,567</p>
+                            <div className="w-full bg-gray-700 rounded-full h-1.5">
+                                <div className="bg-blue-500 h-1.5 rounded-full" style={{width: '80%'}}></div>
+                            </div>
+                            <div className="flex justify-between text-xs text-gray-500 mt-1">
+                                <span>0%</span>
+                                <span>8%</span>
+                            </div>
                         </div>
                     </div>
                 </div>
-
-                {/* Dashboard Summary Row */}
-                <div className="dashboard-summary-row" style={{display: 'flex', gap: '24px', marginBottom: '32px'}}>
-                    <div className="summary-card expense position-relative" style={{flex: 1, background: '#fff', borderRadius: '12px', padding: '24px', boxShadow: '0 2px 8px rgba(0,0,0,0.03)'}}>
-                        <span>AYLIK GİDER</span>
-                        <h2>₺250,00</h2>
-                        <span className="summary-change down">-5.2%</span>
-                        <span className="summary-desc">geçen aya göre</span>
-                        <i className="bi bi-receipt summary-icon"></i>
+                {/* Banner grid içinde, inputun sağında mikrofon ikonu */}
+                <div className="bg-gray-800 text-white p-6 rounded-xl flex flex-col md:flex-row md:justify-between md:items-center">
+                    <h2 className="text-lg font-semibold mb-4 md:mb-0">Xtreme AI Hazır! Hemen Dene... Yapay Zekaya Danış →</h2>
+                    <form className="flex gap-2 w-full min-w-0 max-w-full overflow-hidden md:flex md:justify-end md:items-center md:gap-2 md:w-auto md:ml-auto md:whitespace-nowrap" style={{wordBreak: 'break-word'}}>
+                        <div className="relative flex-1">
+                            <input type="text" placeholder="İstemizi yazın veya sesli iletin" className="w-full min-w-0 max-w-full md:w-[300px] md:max-w-[300px] px-3 py-3 rounded-md text-lg text-gray-800 pr-5" />
+                            <button type="button" tabIndex={-1} className="absolute right-2 top-1/2 -translate-y-1/2 text-gray-500 hover:text-blue-500 focus:outline-none">
+                                <i className="fas fa-microphone"></i>
+                            </button>
+                        </div>
+                        <button type="submit" className="bg-white text-black font-semibold px-6 py-2 rounded-md transition-colors duration-200 hover:bg-gray-100 shadow-none">Gönder</button>
+                    </form>
+                </div>
+                <SummaryCards />
+                <div className="grid grid-cols-1 xl:grid-cols-12 gap-6">
+                    <div className="xl:col-span-8">
+                        <Charts />
                     </div>
-                    <div className="summary-card receivable position-relative" style={{flex: 1, background: '#fff', borderRadius: '12px', padding: '24px', boxShadow: '0 2px 8px rgba(0,0,0,0.03)'}}>
-                        <span>AYLIK ALINACAKLAR</span>
-                        <h2>₺9.102.091,88</h2>
-                        <span className="summary-change up">+2.1%</span>
-                        <span className="summary-desc">geçen aya göre</span>
-                        <i className="bi bi-wallet2 summary-icon"></i>
-                    </div>
-                    <div className="summary-card payment position-relative" style={{flex: 1, background: '#fff', borderRadius: '12px', padding: '24px', boxShadow: '0 2px 8px rgba(0,0,0,0.03)'}}>
-                        <span>BORÇ ÖDEMELERİ</span>
-                        <h2>₺0,00</h2>
-                        <span className="summary-change up">+1.8%</span>
-                        <span className="summary-desc">geçen aya göre</span>
-                        <i className="bi bi-credit-card summary-icon"></i>
-                    </div>
-                    <div className="summary-card balance position-relative" style={{flex: 1, background: '#fff', borderRadius: '12px', padding: '24px', boxShadow: '0 2px 8px rgba(0,0,0,0.03)'}}>
-                        <span>TOPLAM BAKİYE</span>
-                        <h2>₺0,00</h2>
-                        <span className="summary-change up">+8.5%</span>
-                        <span className="summary-desc">geçen aya göre</span>
-                        <i className="bi bi-pie-chart summary-icon"></i>
+                    <div className="xl:col-span-4">
+                        <RecentTransactions />
                     </div>
                 </div>
-
-                {/* Diğer dashboard bileşenleri */}
-                <Charts />
                 <QuickActions />
                 <AllFeatures />
-                <QuickActionModal isOpen={isModalOpen} onClose={() => setModalOpen(false)} />
             </div>
+            <QuickActionModal isOpen={isModalOpen} onClose={() => setModalOpen(false)} />
         </div>
     );
 };

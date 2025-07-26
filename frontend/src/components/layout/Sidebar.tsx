@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { FiGrid, FiUser, FiCreditCard, FiBookOpen, FiPenTool, FiCalendar, FiImage, FiSettings, FiLogOut, FiTarget, FiRepeat, FiSmile, FiCheckSquare, FiHeart, FiBarChart2, FiTrendingUp, FiDollarSign, FiFileText, FiList, FiPlayCircle, FiBell, FiPhone, FiMusic, FiCamera, FiVideo, FiCloud, FiServer, FiMenu, FiShare2, FiClipboard, FiBook, FiEdit, FiCoffee, FiBriefcase, FiDroplet, FiPieChart, FiMoon, FiMapPin, FiCheckCircle } from 'react-icons/fi';
+import { FiGrid, FiUser, FiCreditCard, FiBookOpen, FiPenTool, FiCalendar, FiImage, FiSettings, FiLogOut, FiTarget, FiRepeat, FiSmile, FiCheckSquare, FiHeart, FiBarChart2, FiTrendingUp, FiDollarSign, FiFileText, FiList, FiPlayCircle, FiBell, FiPhone, FiMusic, FiCamera, FiVideo, FiCloud, FiServer, FiMenu, FiShare2, FiClipboard, FiBook, FiEdit, FiCoffee, FiBriefcase, FiDroplet, FiPieChart, FiMoon, FiMapPin, FiCheckCircle, FiFolder, FiX } from 'react-icons/fi';
 import { IconType } from 'react-icons';
 
 interface MenuItem {
   icon?: IconType;
   label: string;
-  subItems?: { label: string }[];
+  subItems?: MenuItem[];
 }
 
 const menuItems: MenuItem[] = [
@@ -25,6 +25,17 @@ const menuItems: MenuItem[] = [
       { label: 'To-Do List' },
       { label: 'Okuma Listesi' },
       { label: 'Notlar' },
+      {
+        label: 'Hukuk',
+        icon: FiBook,
+        subItems: [
+          { label: 'Dosyalar' },
+          { label: 'Hukuk Notları' },
+          { label: 'Davalar' },
+          { label: 'İcralar' },
+        ]
+      },
+      { label: 'Projeler', icon: FiFolder }
     ],
   },
   {
@@ -51,6 +62,23 @@ const menuItems: MenuItem[] = [
       { label: 'Notlarım' },
       { label: 'Listelerim' },
       { label: 'İlerleme' },
+      {
+        label: 'Akademik',
+        icon: FiBookOpen,
+        subItems: [
+          {
+            label: 'Hukuk',
+            icon: FiBook,
+            subItems: [
+              { label: 'Dosyalar' },
+              { label: 'Hukuk Notları' },
+              { label: 'Davalar' },
+              { label: 'İcralar' },
+            ]
+          },
+          { label: 'Projeler', icon: FiFolder }
+        ]
+      }
     ],
   },
   {
@@ -141,7 +169,13 @@ const subMenuIcons: { [key: string]: IconType } = {
   'Medya Sunucusu': FiServer,
 };
 
-const Sidebar: React.FC = () => {
+interface SidebarProps {
+  mobileOpen?: boolean;
+  setMobileOpen?: (open: boolean) => void;
+  onNavigate?: (page: string) => void;
+}
+
+const Sidebar: React.FC<SidebarProps> = ({ mobileOpen = false, setMobileOpen, onNavigate }) => {
   const [activeMenu, setActiveMenu] = useState<string | null>(null);
   const [collapsed, setCollapsed] = useState(false);
 
@@ -163,10 +197,115 @@ const Sidebar: React.FC = () => {
     setActiveMenu(activeMenu === label ? null : label);
   };
 
+  // Sidebar genişlik classları
+  const sidebarWidth = collapsed ? 'w-24 min-w-[96px]' : 'w-[220px] min-w-[220px]';
+  const sidebarFlexWidth = collapsed ? 'w-16' : 'w-[200px]';
+
   return (
-    <aside className={`flex h-full bg-[#444464] shadow-2xl p-4 relative min-h-screen transition-all duration-300 ${collapsed ? 'w-20' : 'w-56'} sm:w-56`}>
+    <>
+      {/* Hamburger icon - sadece mobilde */}
+      {/* Mobilde tam ekran sidebar ve overlay */}
+      {mobileOpen && setMobileOpen && (
+        <>
+          <div className="fixed inset-0 z-40 bg-black bg-opacity-40" onClick={() => setMobileOpen(false)}></div>
+          <aside className="fixed top-0 left-0 z-50 w-screen h-screen bg-[#444464] shadow-2xl p-0 transition-all duration-300 overflow-y-auto sm:hidden">
+            <div className="p-4">
+              <button
+                className="absolute top-4 right-4 text-white bg-[#23232a] rounded-full p-2 z-50"
+                onClick={() => setMobileOpen(false)}
+                aria-label="Menüyü Kapat"
+              >
+                <FiX size={28} />
+              </button>
+              {/* Sidebar içeriği (mobilde) */}
+              {/* Ana Sidebar */}
+              <div className={`flex flex-col w-full items-center transition-all duration-300 relative`}>
+                {/* Collapsible Toggle mobilde gerek yok */}
+                {/* Logo ve Başlık */}
+                <div className={`flex items-center gap-3 mb-10 mt-20 w-full justify-center`}>
+                  <span className="w-10 h-10 rounded-xl bg-[#6366F1] flex items-center justify-center text-white font-bold text-2xl">X</span>
+                  <span className="text-white font-semibold text-xl">Xtreme Hub</span>
+                </div>
+                {/* Kullanıcı Bilgisi */}
+                <div className="flex items-center gap-2 mb-6 bg-[#2d3142] rounded-xl px-4 py-2 shadow-sm">
+                  <span className="w-12 h-12 rounded-full bg-[#bfc6e0] flex items-center justify-center text-[#444464] font-bold text-2xl">M</span>
+                  <div className="flex flex-col">
+                    <span className="text-white font-semibold text-base leading-tight">Muhammed</span>
+                    <span className="text-[#b0b3c6] text-xs leading-tight">UI/UX Designer</span>
+                  </div>
+                </div>
+                {/* Menü */}
+                <nav className="flex flex-col gap-2 w-full mt-2">
+                  {menuItems.map((item, idx) => {
+                    const isMobile = typeof window !== 'undefined' && window.innerWidth < 640;
+                    const isActive = item.subItems && item.subItems.length > 0 && activeMenu === item.label && (isMobile ? true : !collapsed);
+                    return (
+                      <React.Fragment key={item.label}>
+                        <div className="relative">
+                          <a
+                            href="#"
+                            onClick={() => {
+                              if (item.label === 'Dashboard' && onNavigate) onNavigate('dashboard');
+                              else if (item.subItems) setActiveMenu(activeMenu === item.label ? null : item.label);
+                            }}
+                            className={`flex items-center gap-3 px-6 py-3 rounded-xl font-medium transition-all duration-200
+                              ${activeMenu === item.label ? 'bg-[#23223A] text-white shadow-md' : 'text-[#e5e7eb] hover:bg-[#23223A] hover:text-white'}
+                              ${item.subItems && item.subItems.length > 0 ? 'cursor-pointer' : ''}`}
+                          >
+                            {item.icon && <span className="w-6 h-6 flex items-center justify-center text-xl">{item.icon && <item.icon />}</span>}
+                            <span>{item.label}</span>
+                          </a>
+                          {/* Alt Menü */}
+                          {isActive && item.subItems && (
+                            <div className="w-full mt-2 rounded-b-xl p-2 bg-[#33334d] shadow-xl transition-all duration-300 origin-top transform scale-y-100 opacity-100">
+                              <div className="grid grid-cols-3 sm:grid-cols-2 gap-2 w-full h-full content-start">
+                                {item.subItems.map((subItem) => (
+                                  <a
+                                    key={subItem.label}
+                                    href="#"
+                                    onClick={() => {
+                                      if (subItem.label === 'Favori Ürünler' && onNavigate) onNavigate('favori-urunler');
+                                    }}
+                                    className="flex flex-col items-center justify-center gap-1 px-1 py-3 rounded-lg text-[#e5e7eb] hover:bg-[#23223A] hover:text-white transition-all duration-200 min-h-[70px]"
+                                  >
+                                    {subItem.icon && (
+                                      <span className="w-7 h-7 flex items-center justify-center text-xl mb-1">
+                                        {React.createElement(subItem.icon)}
+                                      </span>
+                                    )}
+                                    {subMenuIcons[subItem.label] && !subItem.icon && (
+                                      <span className="w-7 h-7 flex items-center justify-center text-xl mb-1">
+                                        {React.createElement(subMenuIcons[subItem.label])}
+                                      </span>
+                                    )}
+                                    <span className="text-xs text-center leading-tight">{subItem.label}</span>
+                                  </a>
+                                ))}
+                              </div>
+                            </div>
+                          )}
+                        </div>
+                      </React.Fragment>
+                    );
+                  })}
+                </nav>
+                {/* Çıkış Butonu */}
+                <div className="mt-8 mb-4 w-full flex justify-center pb-2">
+                  <button className="flex items-center gap-2 px-8 py-3 rounded-xl bg-white text-[#6366F1] font-semibold shadow-lg hover:bg-[#f3f4f6] transition-all text-base">
+                    <FiLogOut />
+                    Çıkış Yap
+                  </button>
+                </div>
+              </div>
+            </div>
+          </aside>
+        </>
+      )}
+
+      {/* Masaüstü ve sm üstü için normal sidebar */}
+      <aside className={`hidden sm:block fixed top-0 left-0 z-40 h-screen bg-[#444464] shadow-2xl p-4 transition-all duration-300 overflow-y-auto ${sidebarWidth} lg:w-auto lg:min-w-0`}>
       {/* Ana Sidebar */}
-      <div className={`flex flex-col ${collapsed ? 'w-16' : 'w-56'} items-center transition-all duration-300 relative`}>
+        <div className={`flex flex-col ${sidebarFlexWidth} items-center transition-all duration-300 relative`}>
         {/* Collapsible Toggle - sadece mobilde görünür */}
         <button
           className={`z-20 shadow-md transition-all flex items-center justify-center bg-[#23232a] text-white rounded-full p-2 sm:p-2.5 hover:bg-[#18181b] sm:hidden ${collapsed ? 'opacity-70' : ''} ${collapsed ? 'absolute top-0 left-1 right-1 mx-auto' : 'absolute top-2 right-2'}`}
@@ -183,7 +322,7 @@ const Sidebar: React.FC = () => {
         </div>
         {/* Kullanıcı Bilgisi */}
         {!collapsed && (
-          <div className="flex items-center gap-3 w-full mb-8 bg-[#2d3142] rounded-xl px-4 py-3 shadow-sm">
+            <div className="flex items-center gap-2 mb-6 bg-[#2d3142] rounded-xl px-4 py-2 shadow-sm">
             <span className="w-12 h-12 rounded-full bg-[#bfc6e0] flex items-center justify-center text-[#444464] font-bold text-2xl">M</span>
             <div className="flex flex-col">
               <span className="text-white font-semibold text-base leading-tight">Muhammed</span>
@@ -210,19 +349,25 @@ const Sidebar: React.FC = () => {
                   </a>
                   {/* Alt Menü sadece geniş modda açılır, mobilde tam genişlikte ve üstte açılır */}
                   {isActive && (
-                    <div className={`z-20 ${
-                      'sm:absolute sm:left-full sm:top-0 sm:ml-2 sm:h-full sm:w-56 sm:rounded-xl sm:p-3 sm:bg-[#33334d] sm:shadow-xl' +
-                      ' left-0 right-0 top-full mt-2 w-full rounded-b-xl p-2 bg-[#33334d] shadow-xl sm:absolute'
-                    }`}
-                    >
+                      <>
+                        {/* Her ekranda: submenu ana menüden sonra aşağıda açılır */}
+                        <div className="w-full mt-2 rounded-b-xl p-2 bg-[#33334d] shadow-xl transition-all duration-300 origin-top transform scale-y-100 opacity-100">
                       <div className="grid grid-cols-2 gap-2 w-full h-full content-start">
                         {item.subItems && item.subItems.map((subItem) => (
                           <a
                             key={subItem.label}
                             href="#"
+                                onClick={() => {
+                                  if (subItem.label === 'Favori Ürünler' && onNavigate) onNavigate('favori-urunler');
+                                }}
                             className="flex flex-col items-center justify-center gap-1 px-1 py-3 rounded-lg text-[#e5e7eb] hover:bg-[#23223A] hover:text-white transition-all duration-200 min-h-[70px]"
                           >
-                            {subMenuIcons[subItem.label] && (
+                                {subItem.icon && (
+                                  <span className="w-7 h-7 flex items-center justify-center text-xl mb-1">
+                                    {React.createElement(subItem.icon)}
+                                  </span>
+                                )}
+                                {subMenuIcons[subItem.label] && !subItem.icon && (
                               <span className="w-7 h-7 flex items-center justify-center text-xl mb-1">
                                 {React.createElement(subMenuIcons[subItem.label])}
                               </span>
@@ -232,6 +377,7 @@ const Sidebar: React.FC = () => {
                         ))}
                       </div>
                     </div>
+                      </>
                   )}
                 </div>
                 {/* Mobilde alt menü açıldığında sonraki menüler aşağı kaysın */}
@@ -257,6 +403,7 @@ const Sidebar: React.FC = () => {
         </div>
       </div>
     </aside>
+    </>
   );
 };
 

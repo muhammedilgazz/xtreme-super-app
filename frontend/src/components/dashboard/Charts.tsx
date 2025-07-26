@@ -10,13 +10,6 @@ const category_expenses = [
     { category_type: 'Diğer', total_amount: 100 },
 ];
 
-const recent_transactions = [
-    { type: 'expense', description: 'Market Alışverişi', date: '2025-07-25', amount: 350 },
-    { type: 'income', description: 'Maaş', date: '2025-07-24', amount: 8000 },
-    { type: 'expense', description: 'Online Sipariş', date: '2025-07-23', amount: 420 },
-    { type: 'income', description: 'Freelance Ödeme', date: '2025-07-22', amount: 2500 },
-];
-
 const Charts: React.FC = () => {
     const chartRef = useRef<HTMLCanvasElement>(null);
     const chartInstance = useRef<Chart | null>(null);
@@ -83,69 +76,16 @@ const Charts: React.FC = () => {
     }, []);
 
     return (
-        <div className="row mb-4">
-            {/* Expense Analysis Chart */}
-            <div className="col-xl-8 mb-4">
-                <div className="card modern-card" data-aos="fade-up">
-                    <div className="card-header d-flex justify-content-between align-items-center">
-                        <h5 className="card-title mb-0">Kategoriye Göre Gider Dağılımı</h5>
-                        <div className="dropdown">
-                            <button className="btn btn-sm btn-outline-secondary dropdown-toggle" type="button"
-                                data-bs-toggle="dropdown">
-                                Bu Ay
-                            </button>
-                            <ul className="dropdown-menu">
-                                <li><a className="dropdown-item" href="#">Bu Ay</a></li>
-                                <li><a className="dropdown-item" href="#">Son 3 Ay</a></li>
-                                <li><a className="dropdown-item" href="#">Bu Yıl</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div className="card-body">
-                        <canvas id="categoryExpenseChart" ref={chartRef} height="300"></canvas>
-                    </div>
+        <div className="bg-white rounded-xl shadow-sm h-full flex flex-col">
+            <div className="p-6 border-b border-gray-200 bg-gray-50 rounded-t-xl">
+                <div className="flex justify-between items-center">
+                    <h3 className="text-lg font-bold text-gray-900 m-0 tracking-tight">Kategoriye Göre Gider Dağılımı</h3>
+                    <button className="text-sm text-gray-500 hover:underline">Bu Ay</button>
                 </div>
             </div>
-
-            {/* Recent Transactions */}
-            <div className="col-xl-4 mb-4">
-                <div className="card modern-card recent-transactions" data-aos="fade-up" data-aos-delay="100">
-                    <div className="card-header d-flex justify-content-between align-items-center">
-                        <h5 className="card-title mb-0">Son İşlemler</h5>
-                        <a href="/expense" className="btn btn-sm btn-link">Tümünü Gör</a>
-                    </div>
-                    <div className="card-body p-0 recent-transactions-list">
-                        <div className="list-group list-group-flush">
-                            {recent_transactions.map((transaction, index) => (
-                                <div key={index} className="list-group-item border-0 px-4 py-3 transaction-item">
-                                    <div className="d-flex align-items-center">
-                                        <div className="flex-shrink-0">
-                                            <div
-                                                className={`transaction-icon bg-${transaction.type === 'expense' ? 'danger' : 'warning'} bg-opacity-10 rounded-circle p-2`}>
-                                                <i
-                                                    className={`material-icons-round text-${transaction.type === 'expense' ? 'danger' : 'warning'}`}>
-                                                    {transaction.type === 'expense' ? 'receipt' : 'shopping_cart'}
-                                                </i>
-                                            </div>
-                                        </div>
-                                        <div className="flex-grow-1 ms-3">
-                                            <h6 className="mb-1">
-                                                {transaction.description}
-                                            </h6>
-                                            <small className="text-muted">
-                                                {new Date(transaction.date).toLocaleDateString('tr-TR')}
-                                            </small>
-                                        </div>
-                                        <div className="text-end">
-                                            <h6 className="mb-1 text-danger">
-                                                -₺{transaction.amount.toLocaleString('tr-TR', { minimumFractionDigits: 2 })}
-                                            </h6>
-                                        </div>
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
+            <div className="p-6 flex-grow">
+                <div className="h-full">
+                    <canvas ref={chartRef}></canvas>
                 </div>
             </div>
         </div>

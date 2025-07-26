@@ -1,4 +1,18 @@
 /* Enhanced Dashboard Styles */
+.dashboard-layout {
+    display: flex;
+    gap: 2rem;
+}
+
+.main-content {
+    flex: 1;
+}
+
+.right-sidebar {
+    width: 320px;
+    flex-shrink: 0;
+}
+
 .text-gradient {
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     -webkit-background-clip: text;
