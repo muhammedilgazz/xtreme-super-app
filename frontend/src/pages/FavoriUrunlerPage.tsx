@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useRef, useEffect } from 'react';
+import React, { useState, useMemo, useRef, useEffect, DragEvent } from 'react';
 import { FiFileText, FiHome, FiDollarSign, FiTarget, FiSettings, FiPlusCircle, FiFilter, FiMoreVertical, FiBell, FiLifeBuoy, FiBookOpen, FiPenTool, FiCalendar, FiFilm, FiShoppingBag, FiX, FiHeart, FiSearch, FiTag, FiShoppingCart, FiStar, FiClock, FiList, FiPlus, FiEdit3 } from 'react-icons/fi';
 import { IconType } from 'react-icons';
 
@@ -817,7 +817,48 @@ const UrunFormModal: React.FC<UrunFormModalProps> = ({ isOpen, onClose, onSave, 
                 ))}
               </div>
             )}
-            {/* Yeni resim ekleme */}
+            {/* Sürükle bırak alanı */}
+            <div
+              className="flex flex-col items-center justify-center border-2 border-dashed border-gray-300 rounded-lg p-4 text-gray-500 cursor-pointer hover:border-blue-400 transition-colors"
+              onDragOver={e => { e.preventDefault(); e.stopPropagation(); }}
+              onDrop={async (e: DragEvent<HTMLDivElement>) => {
+                e.preventDefault();
+                e.stopPropagation();
+                const files = Array.from(e.dataTransfer.files as FileList).filter((f: File) => f.type.startsWith('image/'));
+                for (const file of files) {
+                  const reader = new FileReader();
+                  reader.onload = (ev) => {
+                    if (typeof ev.target?.result === 'string') {
+                      setResimler(prev => [...prev, ev.target!.result as string]);
+                    }
+                  };
+                  reader.readAsDataURL(file as Blob);
+                }
+              }}
+              onClick={() => {
+                const input = document.createElement('input');
+                input.type = 'file';
+                input.accept = 'image/*';
+                input.multiple = true;
+                input.onchange = (e: any) => {
+                  const files = Array.from(e.target.files as FileList).filter((f: File) => f.type.startsWith('image/'));
+                  for (const file of files) {
+                    const reader = new FileReader();
+                    reader.onload = (ev) => {
+                      if (typeof ev.target?.result === 'string') {
+                        setResimler(prev => [...prev, ev.target!.result as string]);
+                      }
+                    };
+                    reader.readAsDataURL(file as Blob);
+                  }
+                };
+                input.click();
+              }}
+            >
+              <span className="mb-1">Sürükleyip bırakın veya tıklayarak resim seçin</span>
+              <span className="text-xs text-gray-400">(Birden fazla resim seçebilirsiniz)</span>
+            </div>
+            {/* Yeni resim ekleme (URL ile) */}
             <div className="flex gap-2">
               <input 
                 type="url" 
@@ -941,7 +982,9 @@ const FavoriUrunlerPage: React.FC = () => {
 
     const filtreliUrunler = useMemo(() => {
         return urunler.filter(p => {
-            const aramaUygun = p.isim.toLowerCase().includes(arama.toLowerCase());
+            const aramaUygun = arama === '' || 
+                p.isim.toLowerCase().includes(arama.toLowerCase()) ||
+                p.etiketler.some(etiket => etiket.toLowerCase().includes(arama.toLowerCase()));
             const kategoriUygun = kategori === 'hepsi' || p.kategori === kategori;
             const fiyatUygun = p.fiyat >= fiyatMin && p.fiyat <= fiyatMax;
             const tercihUygun = !tercihEdilenler || !!p.tercihEdilen;
