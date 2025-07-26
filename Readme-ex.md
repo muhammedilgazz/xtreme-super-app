@@ -3,6 +3,35 @@
 Bu depo, Xtreme Super App'in tüm bileşenlerini içeren monorepo yapısıdır. Xtreme Super App, finans yönetiminden kişisel gelişime, eğlenceden günlük ajanda takibine kadar hayatınızın her alanını tek bir çatı altında birleştiren, yapay zeka destekli, kapsamlı bir kişisel asistan uygulamasıdır.
 
 ---
+Proje Mimarisi ve Nesne Kontrol Yapıları
+Bu proje, modern PHP OOP prensipleri temel alınarak esnek, sürdürülebilir ve test edilebilir bir kod tabanı oluşturma hedefiyle geliştirilmiştir. Nesnelerin oluşturulması, yönetilmesi ve birbirleriyle olan iletişiminde aşağıda belirtilen temel felsefeler ve desenler yol gösterici olarak kabul edilmiştir.
+1. Temel Felsefe: SOLID Prensipleri
+Kod kalitemizin temelini oluşturan beş evrensel tasarım prensibidir. Mimarideki tüm kararlar bu prensiplere uygun olarak alınmaya çalışılır.
+ * S (Single Responsibility): Her sınıfın yalnızca tek bir amacı ve sorumluluğu vardır. Bu, sınıfları daha küçük, odaklanmış ve anlaşılır kılar.
+ * O (Open/Closed): Mevcut kodu değiştirmeden yeni özellikler eklemeye olanak tanıyan bir yapı hedeflenir. Bu, genellikle arayüzler (interfaces) ve soyutlamalar aracılığıyla sağlanır.
+ * L (Liskov Substitution): Alt sınıflar, türetildikleri üst sınıfların yerine, programın tutarlılığını bozmadan kullanılabilir olmalıdır.
+ * I (Interface Segregation): Kapsamlı ve büyük arayüzler yerine, amaca yönelik daha küçük ve spesifik arayüzler tercih edilir.
+ * D (Dependency Inversion): Yüksek seviyeli modüller, düşük seviyeli modüllere doğrudan bağımlı olmaz. Her ikisi de soyutlamalara (arayüzlere) bağlıdır. Bu, sistemin en kritik gevşek bağlılık (loose-coupling) prensibidir.
+2. Çekirdek Mekanizma: Dependency Injection & Service Container
+Nesneler arasındaki bağımlılıklar, "Dependency Injection" (Bağımlılık Enjeksiyonu) yöntemiyle yönetilir. Bir sınıf, ihtiyaç duyduğu başka bir nesneyi (bağımlılığı) kendisi oluşturmaz; bunun yerine bu bağımlılık ona dışarıdan, genellikle kurucu metot (constructor) aracılığıyla verilir.
+Bu sürecin otomatikleştirilmesi ve merkezi olarak yönetilmesi için bir Service Container (Servis Konteyneri) kullanılır. Konteyner, projedeki tüm servislerin nasıl oluşturulacağını bilir ve bir nesneye ihtiyaç duyulduğunda, onun tüm bağımlılıklarını çözümleyerek nesneyi hazır hale getirir. Bu yaklaşım, sıkı bağımlılıkları (tight-coupling) ortadan kaldırır ve kodun test edilebilirliğini en üst düzeye çıkarır.
+3. Yaratımsal Tasarım Desenleri (Creational Patterns)
+Nesnelerin esnek ve kontrollü bir şekilde nasıl oluşturulacağını tanımlayan desenlerdir.
+ * Factory Method: Bir nesnenin oluşturulma mantığını alt sınıflara devrederek esneklik sağlar.
+ * Abstract Factory: Birbiriyle ilişkili nesne ailelerini, somut sınıfları belirtmeden oluşturur.
+ * Builder: new Class(...) karmaşası yerine, karmaşık nesneleri adım adım ve daha okunaklı bir şekilde inşa eder.
+ * Repository Pattern: Veri kaynaklarına (veritabanı, API vb.) erişim mantığını iş katmanından tamamen soyutlar. UserRepository gibi sınıflar aracılığıyla veri işlemleri yapılır.
+4. Yapısal Tasarım Desenleri (Structural Patterns)
+Sınıfların ve nesnelerin daha büyük yapılar oluşturmak için nasıl bir araya getirileceğini tanımlar.
+ * Decorator: Bir nesnenin davranışını, sınıfını değiştirmeden, çalışma zamanında dinamik olarak genişletir. (Örn: CacheableUserRepository).
+ * Adapter: Uyumsuz arayüzlere sahip sınıfların birlikte çalışabilmesini sağlar.
+ * Facade: Karmaşık bir alt sisteme daha basit ve birleşik bir arayüz sunar.
+5. Davranışsal Tasarım Desenleri (Behavioral Patterns)
+Nesneler arasındaki etkileşim ve sorumluluk dağılımı üzerine odaklanır.
+ * Strategy: Bir işi yapmanın farklı yollarını (algoritmaları) ayrı sınıflar olarak tanımlar ve çalışma anında değiştirilebilir hale getirir. (Örn: Farklı ödeme stratejileri).
+ * Observer (Event/Listener): Bir nesnede bir durum değişikliği olduğunda, ona bağımlı olan diğer nesnelerin otomatik olarak bilgilendirilmesini sağlar. Bu, modüller arası iletişimi gevşek bağlarla kurmak için idealdir.
+ * Command: Bir isteği, tüm bilgileriyle birlikte bir nesne içine kapsüller. Bu, istekleri sıraya koyma, geri alma veya loglama gibi işlemleri kolaylaştırır.
+---
 
 ## Proje Bileşenleri
 
