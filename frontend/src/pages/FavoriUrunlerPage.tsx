@@ -8,7 +8,7 @@ interface Urun {
   fiyat: number;
   kategori: string;
   etiketler: string[];
-  resim: string;
+  resimler: string[];
   aciklama: string;
   siteAdi: string;
   satinAlmaLinki: string;
@@ -108,7 +108,11 @@ const ornekUrunler: Urun[] = [
     fiyat: 2999,
     kategori: 'Elektronik',
     etiketler: ['fare', 'ofis', 'kablosuz'],
-    resim: 'https://placehold.co/600x400/e9ecef/212529?text=MX+Master+3S',
+    resimler: [
+      'https://placehold.co/600x400/e9ecef/212529?text=MX+Master+3S',
+      'https://placehold.co/600x400/e9ecef/212529?text=MX+Master+3S+2',
+      'https://placehold.co/600x400/e9ecef/212529?text=MX+Master+3S+3'
+    ],
     aciklama: 'Gelişmiş kablosuz performans ve ergonomi sunan profesyonel fare.',
     siteAdi: 'Amazon',
     satinAlmaLinki: 'https://amazon.com.tr/logitech-mx-master-3s',
@@ -122,7 +126,10 @@ const ornekUrunler: Urun[] = [
     fiyat: 8500,
     kategori: 'Elektronik',
     etiketler: ['kulaklık', 'müzik', 'gürültü engelleme'],
-    resim: 'https://placehold.co/600x400/e9ecef/212529?text=Sony+XM5',
+    resimler: [
+      'https://placehold.co/600x400/e9ecef/212529?text=Sony+XM5',
+      'https://placehold.co/600x400/e9ecef/212529?text=Sony+XM5+2'
+    ],
     aciklama: 'Sektör lideri gürültü engelleme özelliğine sahip yüksek kaliteli kablosuz kulaklık.',
     siteAdi: 'Amazon',
     satinAlmaLinki: 'https://amazon.com.tr/sony-wh-1000xm5',
@@ -136,7 +143,10 @@ const ornekUrunler: Urun[] = [
     fiyat: 6200,
     kategori: 'Mutfak',
     etiketler: ['kahve', 'kapsül', 'makine'],
-    resim: 'https://placehold.co/600x400/e9ecef/212529?text=Nespresso',
+    resimler: [
+      'https://placehold.co/600x400/e9ecef/212529?text=Nespresso',
+      'https://placehold.co/600x400/e9ecef/212529?text=Nespresso+2'
+    ],
     aciklama: 'Tek tuşla taze süt köpüklü kahveler hazırlayan kompakt ve şık kahve makinesi.',
     siteAdi: 'Amazon',
     satinAlmaLinki: 'https://amazon.com.tr/nespresso-lattissima-one',
@@ -150,7 +160,11 @@ const ornekUrunler: Urun[] = [
     fiyat: 38000,
     kategori: 'Elektronik',
     etiketler: ['laptop', 'apple', 'taşınabilir'],
-    resim: 'https://placehold.co/600x400/e9ecef/212529?text=MacBook+Air',
+    resimler: [
+      'https://placehold.co/600x400/e9ecef/212529?text=MacBook+Air',
+      'https://placehold.co/600x400/e9ecef/212529?text=MacBook+Air+2',
+      'https://placehold.co/600x400/e9ecef/212529?text=MacBook+Air+3'
+    ],
     aciklama: 'İnanılmaz ince ve hafif tasarımda güçlü M2 çip ile üstün performans.',
     siteAdi: 'Amazon',
     satinAlmaLinki: 'https://amazon.com.tr/apple-macbook-air-m2',
@@ -164,7 +178,10 @@ const ornekUrunler: Urun[] = [
     fiyat: 35000,
     kategori: 'Elektronik',
     etiketler: ['monitör', 'oyuncu', 'geniş ekran'],
-    resim: 'https://placehold.co/600x400/e9ecef/212529?text=Odyssey+G9',
+    resimler: [
+      'https://placehold.co/600x400/e9ecef/212529?text=Odyssey+G9',
+      'https://placehold.co/600x400/e9ecef/212529?text=Odyssey+G9+2'
+    ],
     aciklama: 'Sürükleyici bir oyun deneyimi için 49 inç kavisli QLED oyun monitörü.',
     siteAdi: 'Amazon',
     satinAlmaLinki: 'https://amazon.com.tr/samsung-odyssey-g9',
@@ -178,7 +195,9 @@ const ornekUrunler: Urun[] = [
     fiyat: 1500,
     kategori: 'Aksesuar',
     etiketler: ['powerbank', 'mobil', 'şarj'],
-    resim: 'https://placehold.co/600x400/e9ecef/212529?text=Anker',
+    resimler: [
+      'https://placehold.co/600x400/e9ecef/212529?text=Anker'
+    ],
     aciklama: 'Yüksek kapasiteli ve hızlı şarj özellikli taşınabilir şarj cihazı.',
     siteAdi: 'Amazon',
     satinAlmaLinki: 'https://amazon.com.tr/anker-powercore-20000',
@@ -192,7 +211,9 @@ const ornekUrunler: Urun[] = [
     fiyat: 1800,
     kategori: 'Outdoor',
     etiketler: ['termos', 'kamp', 'içecek'],
-    resim: 'https://placehold.co/600x400/e9ecef/212529?text=Stanley',
+    resimler: [
+      'https://placehold.co/600x400/e9ecef/212529?text=Stanley'
+    ],
     aciklama: 'İçecekleri saatlerce sıcak veya soğuk tutan ikonik ve dayanıklı termos.',
     siteAdi: 'Amazon',
     satinAlmaLinki: 'https://amazon.com.tr/stanley-termos-1l',
@@ -206,7 +227,10 @@ const ornekUrunler: Urun[] = [
     fiyat: 9000,
     kategori: 'Ev Aletleri',
     etiketler: ['robot süpürge', 'temizlik', 'akıllı ev'],
-    resim: 'https://placehold.co/600x400/e9ecef/212529?text=Robot+Süpürge',
+    resimler: [
+      'https://placehold.co/600x400/e9ecef/212529?text=Robot+Süpürge',
+      'https://placehold.co/600x400/e9ecef/212529?text=Robot+Süpürge+2'
+    ],
     aciklama: 'Akıllı haritalama ve otomatik şarj özellikli robot süpürge ve paspas.',
     siteAdi: 'Amazon',
     satinAlmaLinki: 'https://amazon.com.tr/xiaomi-mi-robot-vacuum',
@@ -292,250 +316,353 @@ const SepetOlusturModal: React.FC<SepetOlusturModalProps> = ({ isOpen, onClose, 
 };
 
 const UrunKarti: React.FC<UrunKartiProps> = ({ urun, onDetailsClick, onTercihToggle, onZamanPlanlamasiChange, onSepeteEkle, sepetler, onCreateSepet }) => {
-    const [sepetModalOpen, setSepetModalOpen] = useState(false);
-    const [sepetSecimModalOpen, setSepetSecimModalOpen] = useState(false);
+  const [aktifResimIndex, setAktifResimIndex] = useState(0);
+  const [sepetModalOpen, setSepetModalOpen] = useState(false);
+  const [sepetSecimModalOpen, setSepetSecimModalOpen] = useState(false);
+  
+  const zamanPlanlamasiText = {
+      'bu-ay': 'Bu Ay Al',
+      'bu-yil': 'Bu Yıl Al', 
+      'alınacaklar': 'Alınacaklar',
+      'ihtiyaç': 'İhtiyaç'
+  };
 
-    const zamanPlanlamasiText = {
-        'bu-ay': 'Bu Ay Al',
-        'bu-yil': 'Bu Yıl Al', 
-        'alınacaklar': 'Alınacaklar',
-        'ihtiyaç': 'İhtiyaç'
-    };
+  const zamanPlanlamasiColor = {
+      'bu-ay': 'bg-blue-100 text-blue-800',
+      'bu-yil': 'bg-green-100 text-green-800',
+      'alınacaklar': 'bg-yellow-100 text-yellow-800',
+      'ihtiyaç': 'bg-gray-100 text-gray-800'
+  };
 
-    const zamanPlanlamasiColor = {
-        'bu-ay': 'bg-blue-100 text-blue-800',
-        'bu-yil': 'bg-green-100 text-green-800',
-        'alınacaklar': 'bg-yellow-100 text-yellow-800',
-        'ihtiyaç': 'bg-gray-100 text-gray-800'
-    };
-
-    return (
-        <div className="bg-white rounded-lg shadow-md overflow-hidden group transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
-            <div className="relative">
-                <img src={urun.resim} alt={urun.isim} className="w-full h-48 object-cover"/>
-                <div className="absolute top-2 right-2 bg-white/80 backdrop-blur-sm p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity">
-                    <button 
-                        className={`${urun.tercihEdilen ? 'text-yellow-500' : 'text-gray-400'} hover:text-yellow-500`}
-                        onClick={() => onTercihToggle(urun.id)}
-                    >
-                        <FiStar size={20} />
-                    </button>
-                </div>
-                {urun.tercihEdilen && (
-                    <div className="absolute top-2 left-2 bg-yellow-500 text-white px-2 py-1 rounded-full text-xs font-semibold">
-                        Tercih
-                    </div>
-                )}
-                {urun.zamanPlanlamasi && (
-                    <div className={`absolute bottom-2 left-2 px-2 py-1 rounded-full text-xs font-semibold ${zamanPlanlamasiColor[urun.zamanPlanlamasi]}`}>
-                        {zamanPlanlamasiText[urun.zamanPlanlamasi]}
-                    </div>
-                )}
-            </div>
-            <div className="p-4">
-                <p className="text-sm font-semibold" style={{ color: renkler.acikYazi }}>{urun.kategori}</p>
-                <h4 className="text-lg font-bold truncate" style={{ color: renkler.anaYazi }}>{urun.isim}</h4>
-                <p className="text-xl font-black mt-2" style={{ color: renkler.buton }}>
-                    {urun.fiyat.toLocaleString('tr-TR', { style: 'currency', currency: 'TRY' })}
-                </p>
-                
-                {/* Zaman Planlaması */}
-                <div className="mt-3 mb-3">
-                    <select 
-                        value={urun.zamanPlanlamasi || ''} 
-                        onChange={(e) => onZamanPlanlamasiChange(urun.id, e.target.value as Urun['zamanPlanlamasi'])}
-                        className="w-full p-2 border rounded-md text-sm"
-                    >
-                        <option value="">Zaman Planlaması Seç</option>
-                        <option value="bu-ay">Bu Ay Al</option>
-                        <option value="bu-yil">Bu Yıl Al</option>
-                        <option value="alınacaklar">Alınacaklar</option>
-                        <option value="ihtiyaç">İhtiyaç</option>
-                    </select>
-                </div>
-
-                <div className="mt-4 flex space-x-2">
-                    <Buton onClick={() => onDetailsClick(urun)} className="w-full" variant="secondary">Detaylar</Buton>
-                    <Buton onClick={() => setSepetSecimModalOpen(true)} className="w-full">Sepete Ekle</Buton>
-                </div>
-            </div>
-
-            {/* Sepet Seçim Modal */}
-            <Modal isOpen={sepetSecimModalOpen} onClose={() => setSepetSecimModalOpen(false)} baslik="Sepete Ekle">
-                <div className="space-y-4">
-                    <div className="grid grid-cols-1 gap-3">
-                        {sepetler.map(sepet => (
-                            <button
-                                key={sepet.id}
-                                onClick={() => {
-                                    onSepeteEkle(urun.id, sepet.id);
-                                    setSepetSecimModalOpen(false);
-                                }}
-                                className="flex items-center justify-between p-3 border rounded-lg hover:bg-gray-50"
-                            >
-                                <div>
-                                    <p className="font-semibold">{sepet.isim}</p>
-                                    <p className="text-sm text-gray-500">{sepet.urunler.length} ürün</p>
-                                </div>
-                                <FiPlus className="text-gray-400" />
-                            </button>
-                        ))}
-                    </div>
-                    <div className="border-t pt-4">
-                        <Buton 
-                            onClick={() => {
-                                setSepetSecimModalOpen(false);
-                                setSepetModalOpen(true);
-                            }}
-                            icon={FiPlus}
-                            className="w-full"
-                        >
-                            Yeni Sepet Oluştur
-                        </Buton>
-                    </div>
-                </div>
-            </Modal>
-
-            <SepetOlusturModal 
-                isOpen={sepetModalOpen} 
-                onClose={() => setSepetModalOpen(false)} 
-                onCreateSepet={onCreateSepet}
-            />
+  return (
+    <div className="bg-white rounded-lg shadow-md overflow-hidden group transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+      <div className="relative">
+        <img src={urun.resimler[aktifResimIndex]} alt={urun.isim} className="w-full h-48 object-cover"/>
+        {/* Resim sayısı göstergesi */}
+        {urun.resimler.length > 1 && (
+          <div className="absolute top-2 left-2 bg-black/50 text-white px-2 py-1 rounded-full text-xs">
+            {aktifResimIndex + 1} / {urun.resimler.length}
+          </div>
+        )}
+        {/* Resim geçiş butonları */}
+        {urun.resimler.length > 1 && (
+          <div className="absolute inset-0 flex items-center justify-between opacity-0 group-hover:opacity-100 transition-opacity">
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                setAktifResimIndex(aktifResimIndex === 0 ? urun.resimler.length - 1 : aktifResimIndex - 1);
+              }}
+              className="bg-black/50 text-white p-2 rounded-full ml-2 hover:bg-black/70"
+            >
+              ‹
+            </button>
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                setAktifResimIndex(aktifResimIndex === urun.resimler.length - 1 ? 0 : aktifResimIndex + 1);
+              }}
+              className="bg-black/50 text-white p-2 rounded-full mr-2 hover:bg-black/70"
+            >
+              ›
+            </button>
+          </div>
+        )}
+        {/* Tercih badge sol üst */}
+        {urun.tercihEdilen && (
+          <div className="absolute top-2 left-2 bg-yellow-500 text-white px-2 py-1 rounded-full text-xs font-semibold shadow">
+            Tercih
+          </div>
+        )}
+        {/* Zaman planlaması badge sol alt */}
+        {urun.zamanPlanlamasi && (
+          <div className={`absolute bottom-2 left-2 px-2 py-1 rounded-full text-xs font-semibold shadow ${zamanPlanlamasiColor[urun.zamanPlanlamasi]}`}>
+            {zamanPlanlamasiText[urun.zamanPlanlamasi]}
+          </div>
+        )}
+        {/* Tercih yıldızı sağ alt köşe (tıklanabilir) */}
+        <div className="absolute bottom-2 right-2">
+          <button
+            title="Tercih Edilen"
+            className="bg-white/80 backdrop-blur-sm p-1 rounded-full shadow focus:outline-none"
+            onClick={() => onTercihToggle(urun.id)}
+          >
+            {urun.tercihEdilen ? (
+              <FiStar size={22} className="text-yellow-400" />
+            ) : (
+              <FiStar size={22} className="text-gray-300" />
+            )}
+          </button>
         </div>
-    );
+      </div>
+      <div className="p-4">
+          <p className="text-sm font-semibold" style={{ color: renkler.acikYazi }}>{urun.kategori}</p>
+          <h4 className="text-lg font-bold truncate" style={{ color: renkler.anaYazi }}>{urun.isim}</h4>
+          <p className="text-xl font-black mt-2" style={{ color: renkler.buton }}>
+              {urun.fiyat.toLocaleString('tr-TR', { style: 'currency', currency: 'TRY' })}
+          </p>
+          
+          {/* Zaman Planlaması */}
+          <div className="mt-3 mb-3">
+              <select 
+                  value={urun.zamanPlanlamasi || ''} 
+                  onChange={(e) => onZamanPlanlamasiChange(urun.id, e.target.value as Urun['zamanPlanlamasi'])}
+                  className="w-full p-2 border rounded-md text-sm"
+              >
+                  <option value="">Zaman Planlaması Seç</option>
+                  <option value="bu-ay">Bu Ay Al</option>
+                  <option value="bu-yil">Bu Yıl Al</option>
+                  <option value="alınacaklar">Alınacaklar</option>
+                  <option value="ihtiyaç">İhtiyaç</option>
+              </select>
+          </div>
+
+          <div className="mt-4 flex space-x-2">
+              <Buton onClick={() => onDetailsClick(urun)} className="w-full" variant="secondary">Detaylar</Buton>
+              <a 
+                  href={urun.satinAlmaLinki} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="w-full inline-flex items-center justify-center gap-2"
+                  style={{
+                    background: renkler.buton,
+                    color: '#fff',
+                    padding: '0.5rem 1rem',
+                    borderRadius: '0.5rem',
+                    fontWeight: 600,
+                    transition: 'background 0.2s',
+                  }}
+                  onMouseOver={e => (e.currentTarget.style.background = '#0a1f2e')}
+                  onMouseOut={e => (e.currentTarget.style.background = renkler.buton)}
+              >
+                  <FiShoppingCart size={16} />
+                  Satın Al
+              </a>
+          </div>
+      </div>
+
+      {/* Sepet Seçim Modal */}
+      <Modal isOpen={sepetSecimModalOpen} onClose={() => setSepetSecimModalOpen(false)} baslik="Sepete Ekle">
+          <div className="space-y-4">
+              <div className="grid grid-cols-1 gap-3">
+                  {sepetler.map(sepet => (
+                      <button
+                          key={sepet.id}
+                          onClick={() => {
+                              onSepeteEkle(urun.id, sepet.id);
+                              setSepetSecimModalOpen(false);
+                          }}
+                          className="flex items-center justify-between p-3 border rounded-lg hover:bg-gray-50"
+                      >
+                          <div>
+                              <p className="font-semibold">{sepet.isim}</p>
+                              <p className="text-sm text-gray-500">{sepet.urunler.length} ürün</p>
+                          </div>
+                          <FiPlus className="text-gray-400" />
+                      </button>
+                  ))}
+              </div>
+              <div className="border-t pt-4">
+                  <Buton 
+                      onClick={() => {
+                          setSepetSecimModalOpen(false);
+                          setSepetModalOpen(true);
+                      }}
+                      icon={FiPlus}
+                      className="w-full"
+                  >
+                      Yeni Sepet Oluştur
+                  </Buton>
+              </div>
+          </div>
+      </Modal>
+
+      <SepetOlusturModal 
+          isOpen={sepetModalOpen} 
+          onClose={() => setSepetModalOpen(false)} 
+          onCreateSepet={onCreateSepet}
+      />
+  </div>
+  );
 };
 
 const UrunDetayModal: React.FC<UrunDetayModalProps> = ({ isOpen, onClose, urun, onTercihToggle, onZamanPlanlamasiChange, onSepeteEkle, sepetler, onCreateSepet }) => {
-    if (!urun) return null;
-    const benzerUrunler = ornekUrunler.filter(p => p.kategori === urun.kategori && p.id !== urun.id).slice(0, 3);
-    const [sepetModalOpen, setSepetModalOpen] = useState(false);
-    const [sepetSecimModalOpen, setSepetSecimModalOpen] = useState(false);
+  if (!urun) return null;
+  
+  const benzerUrunler = ornekUrunler.filter(p => p.kategori === urun.kategori && p.id !== urun.id).slice(0, 3);
+  const [aktifResimIndex, setAktifResimIndex] = useState(0);
+  const [sepetModalOpen, setSepetModalOpen] = useState(false);
+  const [sepetSecimModalOpen, setSepetSecimModalOpen] = useState(false);
+  
+  const zamanPlanlamasiText = {
+    'bu-ay': 'Bu Ay Al',
+    'bu-yil': 'Bu Yıl Al', 
+    'alınacaklar': 'Alınacaklar',
+    'ihtiyaç': 'İhtiyaç'
+  };
 
-    const zamanPlanlamasiText = {
-        'bu-ay': 'Bu Ay Al',
-        'bu-yil': 'Bu Yıl Al', 
-        'alınacaklar': 'Alınacaklar',
-        'ihtiyaç': 'İhtiyaç'
-    };
+  const zamanPlanlamasiColor = {
+      'bu-ay': 'bg-blue-100 text-blue-800',
+      'bu-yil': 'bg-green-100 text-green-800',
+      'alınacaklar': 'bg-yellow-100 text-yellow-800',
+      'ihtiyaç': 'bg-gray-100 text-gray-800'
+  };
 
-    return (
-        <Modal isOpen={isOpen} onClose={onClose} baslik={urun.isim}>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div>
-                    <img src={urun.resim} alt={urun.isim} className="w-full h-auto object-cover rounded-lg shadow-lg"/>
-                </div>
-                <div>
-                    <div className="flex items-center justify-between mb-4">
-                        <p className="text-sm font-semibold" style={{color: renkler.buton}}>{urun.kategori}</p>
-                        <p className="text-sm font-medium text-blue-600">{urun.siteAdi}</p>
-                        <button 
-                            className={`${urun.tercihEdilen ? 'text-yellow-500' : 'text-gray-400'} hover:text-yellow-500`}
-                            onClick={() => onTercihToggle(urun.id)}
-                        >
-                            <FiStar size={24} />
-                        </button>
-                    </div>
-                    <p className="mb-4" style={{color: renkler.anaYazi}}>{urun.aciklama}</p>
-                    <div className="mb-4">
-                        {urun.etiketler.map((etiket: string) => (
-                            <span key={etiket} className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold mr-2 mb-2" style={{color: renkler.anaYazi}}>#{etiket}</span>
-                        ))}
-                    </div>
-                    <p className="text-3xl font-extrabold my-4" style={{ color: renkler.buton }}>
-                        {urun.fiyat.toLocaleString('tr-TR', { style: 'currency', currency: 'TRY' })}
-                    </p>
-
-                    {/* Zaman Planlaması */}
-                    <div className="mb-4">
-                        <label className="block text-sm font-medium mb-2">Zaman Planlaması</label>
-                        <select 
-                            value={urun.zamanPlanlamasi || ''} 
-                            onChange={(e) => onZamanPlanlamasiChange(urun.id, e.target.value as Urun['zamanPlanlamasi'])}
-                            className="w-full p-2 border rounded-md"
-                        >
-                            <option value="">Zaman Planlaması Seç</option>
-                            <option value="bu-ay">Bu Ay Al</option>
-                            <option value="bu-yil">Bu Yıl Al</option>
-                            <option value="alınacaklar">Alınacaklar</option>
-                            <option value="ihtiyaç">İhtiyaç</option>
-                        </select>
-                    </div>
-
-                    <div className="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-3">
-                        <Buton icon={FiShoppingCart} onClick={() => setSepetSecimModalOpen(true)} className="w-full">Sepete Ekle</Buton>
-                        <Buton icon={FiHeart} variant="secondary" onClick={() => {}} className="w-full">Favorilere Ekle</Buton>
-                    </div>
-                    <div className="mb-4 mt-4">
-                        <a 
-                            href={urun.satinAlmaLinki} 
-                            target="_blank" 
-                            rel="noopener noreferrer"
-                            className="inline-flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg font-semibold transition-colors"
-                        >
-                            <FiShoppingCart size={16} />
-                            {urun.siteAdi}'den Satın Al
-                        </a>
-                    </div>
-                </div>
+  return (
+    <Modal isOpen={isOpen} onClose={onClose} baslik={urun.isim}>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div>
+          <div className="relative">
+            <img src={urun.resimler[aktifResimIndex]} alt={urun.isim} className="w-full h-auto object-cover rounded-lg shadow-lg"/>
+            {/* Resim sayısı göstergesi */}
+            {urun.resimler.length > 1 && (
+              <div className="absolute top-2 right-2 bg-black/50 text-white px-2 py-1 rounded-full text-xs">
+                {aktifResimIndex + 1} / {urun.resimler.length}
+              </div>
+            )}
+            {/* Resim geçiş butonları */}
+            {urun.resimler.length > 1 && (
+              <div className="absolute inset-0 flex items-center justify-between">
+                <button
+                  onClick={() => setAktifResimIndex(aktifResimIndex === 0 ? urun.resimler.length - 1 : aktifResimIndex - 1)}
+                  className="bg-black/50 text-white p-2 rounded-full ml-2 hover:bg-black/70"
+                >
+                  ‹
+                </button>
+                <button
+                  onClick={() => setAktifResimIndex(aktifResimIndex === urun.resimler.length - 1 ? 0 : aktifResimIndex + 1)}
+                  className="bg-black/50 text-white p-2 rounded-full mr-2 hover:bg-black/70"
+                >
+                  ›
+                </button>
+              </div>
+            )}
+          </div>
+          {/* Küçük resimler */}
+          {urun.resimler.length > 1 && (
+            <div className="flex gap-2 mt-4 overflow-x-auto">
+              {urun.resimler.map((resim, index) => (
+                <button
+                  key={index}
+                  onClick={() => setAktifResimIndex(index)}
+                  className={`flex-shrink-0 w-16 h-16 rounded-lg overflow-hidden border-2 ${
+                    index === aktifResimIndex ? 'border-blue-500' : 'border-gray-300'
+                  }`}
+                >
+                  <img src={resim} alt={`${urun.isim} ${index + 1}`} className="w-full h-full object-cover" />
+                </button>
+              ))}
             </div>
-             <div className="mt-10">
-                <h3 className="text-xl font-bold mb-4" style={{color: renkler.anaYazi}}>Benzer Ürünler</h3>
-                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                    {benzerUrunler.map(p => (
-                        <div key={p.id} className="border rounded-lg p-3 flex items-center space-x-3 hover:bg-gray-50">
-                            <img src={p.resim} alt={p.isim} className="w-16 h-16 object-cover rounded-md"/>
-                            <div>
-                                <p className="font-semibold text-sm">{p.isim}</p>
-                                <p className="text-xs" style={{color: renkler.acikYazi}}>{p.fiyat.toLocaleString('tr-TR', { style: 'currency', currency: 'TRY' })}</p>
-                            </div>
-                        </div>
-                    ))}
-                </div>
-            </div>
+          )}
+        </div>
+        <div>
+          <div className="flex items-center justify-between mb-4">
+            <p className="text-sm font-semibold" style={{color: renkler.buton}}>{urun.kategori}</p>
+            <p className="text-sm font-medium text-blue-600">{urun.siteAdi}</p>
+            <button 
+                className={`${urun.tercihEdilen ? 'text-yellow-500' : 'text-gray-400'} hover:text-yellow-500`}
+                onClick={() => onTercihToggle(urun.id)}
+            >
+              <FiStar size={24} />
+            </button>
+          </div>
+          <p className="mb-4" style={{color: renkler.anaYazi}}>{urun.aciklama}</p>
+          <div className="mb-4">
+            {urun.etiketler.map((etiket: string) => (
+              <span key={etiket} className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold mr-2 mb-2" style={{color: renkler.anaYazi}}>#{etiket}</span>
+            ))}
+          </div>
+          <p className="text-3xl font-extrabold my-4" style={{ color: renkler.buton }}>
+            {urun.fiyat.toLocaleString('tr-TR', { style: 'currency', currency: 'TRY' })}
+          </p>
 
-            {/* Sepet Seçim Modal */}
-            <Modal isOpen={sepetSecimModalOpen} onClose={() => setSepetSecimModalOpen(false)} baslik="Sepete Ekle">
-                <div className="space-y-4">
-                    <div className="grid grid-cols-1 gap-3">
-                        {sepetler.map(sepet => (
-                            <button
-                                key={sepet.id}
-                                onClick={() => {
-                                    onSepeteEkle(urun.id, sepet.id);
-                                    setSepetSecimModalOpen(false);
-                                }}
-                                className="flex items-center justify-between p-3 border rounded-lg hover:bg-gray-50"
-                            >
-                                <div>
-                                    <p className="font-semibold">{sepet.isim}</p>
-                                    <p className="text-sm text-gray-500">{sepet.urunler.length} ürün</p>
-                                </div>
-                                <FiPlus className="text-gray-400" />
-                            </button>
-                        ))}
-                    </div>
-                    <div className="border-t pt-4">
-                        <Buton 
-                            onClick={() => {
-                                setSepetSecimModalOpen(false);
-                                setSepetModalOpen(true);
-                            }}
-                            icon={FiPlus}
-                            className="w-full"
-                        >
-                            Yeni Sepet Oluştur
-                        </Buton>
-                    </div>
-                </div>
-            </Modal>
+          {/* Zaman Planlaması */}
+          <div className="mb-4">
+            <label className="block text-sm font-medium mb-2">Zaman Planlaması</label>
+            <select 
+                value={urun.zamanPlanlamasi || ''} 
+                onChange={(e) => onZamanPlanlamasiChange(urun.id, e.target.value as Urun['zamanPlanlamasi'])}
+                className="w-full p-2 border rounded-md"
+            >
+                <option value="">Zaman Planlaması Seç</option>
+                <option value="bu-ay">Bu Ay Al</option>
+                <option value="bu-yil">Bu Yıl Al</option>
+                <option value="alınacaklar">Alınacaklar</option>
+                <option value="ihtiyaç">İhtiyaç</option>
+            </select>
+          </div>
 
-            <SepetOlusturModal 
-                isOpen={sepetModalOpen} 
-                onClose={() => setSepetModalOpen(false)} 
-                onCreateSepet={onCreateSepet}
-            />
-        </Modal>
-    );
+          <div className="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-3">
+            <Buton icon={FiShoppingCart} onClick={() => setSepetSecimModalOpen(true)} className="w-full">Sepete Ekle</Buton>
+            <a 
+                href={urun.satinAlmaLinki} 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="w-full inline-flex items-center justify-center gap-2 bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg font-semibold transition-colors"
+            >
+              <FiShoppingCart size={16} />
+              Satın Al
+            </a>
+          </div>
+        </div>
+      </div>
+       <div className="mt-10">
+          <h3 className="text-xl font-bold mb-4" style={{color: renkler.anaYazi}}>Benzer Ürünler</h3>
+           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              {benzerUrunler.map(p => (
+                  <div key={p.id} className="border rounded-lg p-3 flex items-center space-x-3 hover:bg-gray-50">
+                      <img src={p.resimler[0]} alt={p.isim} className="w-16 h-16 object-cover rounded-md"/>
+                      <div>
+                          <p className="font-semibold text-sm">{p.isim}</p>
+                          <p className="text-xs" style={{color: renkler.acikYazi}}>{p.fiyat.toLocaleString('tr-TR', { style: 'currency', currency: 'TRY' })}</p>
+                      </div>
+                  </div>
+              ))}
+          </div>
+      </div>
+
+      {/* Sepet Seçim Modal */}
+      <Modal isOpen={sepetSecimModalOpen} onClose={() => setSepetSecimModalOpen(false)} baslik="Sepete Ekle">
+          <div className="space-y-4">
+              <div className="grid grid-cols-1 gap-3">
+                  {sepetler.map(sepet => (
+                      <button
+                          key={sepet.id}
+                          onClick={() => {
+                              onSepeteEkle(urun.id, sepet.id);
+                              setSepetSecimModalOpen(false);
+                          }}
+                          className="flex items-center justify-between p-3 border rounded-lg hover:bg-gray-50"
+                      >
+                          <div>
+                              <p className="font-semibold">{sepet.isim}</p>
+                              <p className="text-sm text-gray-500">{sepet.urunler.length} ürün</p>
+                          </div>
+                          <FiPlus className="text-gray-400" />
+                      </button>
+                  ))}
+              </div>
+              <div className="border-t pt-4">
+                  <Buton 
+                      onClick={() => {
+                          setSepetSecimModalOpen(false);
+                          setSepetModalOpen(true);
+                      }}
+                      icon={FiPlus}
+                      className="w-full"
+                  >
+                      Yeni Sepet Oluştur
+                  </Buton>
+              </div>
+          </div>
+      </Modal>
+
+      <SepetOlusturModal 
+          isOpen={sepetModalOpen} 
+          onClose={() => setSepetModalOpen(false)} 
+          onCreateSepet={onCreateSepet}
+      />
+    </Modal>
+  );
 };
 
 const UrunFormModal: React.FC<UrunFormModalProps> = ({ isOpen, onClose, onSave, initialData = {}, kategoriler }) => {
@@ -544,9 +671,10 @@ const UrunFormModal: React.FC<UrunFormModalProps> = ({ isOpen, onClose, onSave, 
   const [kategori, setKategori] = useState('');
   const [aciklama, setAciklama] = useState('');
   const [etiketler, setEtiketler] = useState('');
-  const [resim, setResim] = useState('');
+  const [resimler, setResimler] = useState<string[]>([]);
   const [siteAdi, setSiteAdi] = useState('');
   const [satinAlmaLinki, setSatinAlmaLinki] = useState('');
+  const [yeniResimUrl, setYeniResimUrl] = useState('');
   
   useEffect(() => {
     if (isOpen && initialData) {
@@ -555,7 +683,7 @@ const UrunFormModal: React.FC<UrunFormModalProps> = ({ isOpen, onClose, onSave, 
       setKategori(initialData.kategori || (kategoriler[0] || ''));
       setAciklama(initialData.aciklama || '');
       setEtiketler(initialData.etiketler ? initialData.etiketler.join(', ') : '');
-      setResim(initialData.resim || '');
+      setResimler(initialData.resimler || []);
       setSiteAdi(initialData.siteAdi || '');
       setSatinAlmaLinki(initialData.satinAlmaLinki || '');
     }
@@ -569,12 +697,24 @@ const UrunFormModal: React.FC<UrunFormModalProps> = ({ isOpen, onClose, onSave, 
       kategori,
       aciklama,
       etiketler: etiketler.split(',').map(e => e.trim()).filter(Boolean),
-      resim: resim || 'https://placehold.co/600x400/e9ecef/212529?text=Yeni+Ürün',
+      resimler: resimler.length > 0 ? resimler : ['https://placehold.co/600x400/e9ecef/212529?text=Yeni+Ürün'],
       siteAdi,
       satinAlmaLinki,
     });
     onClose();
   };
+  
+  const resimEkle = () => {
+    if (yeniResimUrl.trim()) {
+      setResimler([...resimler, yeniResimUrl.trim()]);
+      setYeniResimUrl('');
+    }
+  };
+  
+  const resimSil = (index: number) => {
+    setResimler(resimler.filter((_, i) => i !== index));
+  };
+  
   return (
     <Modal isOpen={isOpen} onClose={onClose} baslik={initialData.id ? 'Ürünü Düzenle' : 'Yeni Ürün Ekle'}>
       <form onSubmit={handleSubmit} className="space-y-4">
@@ -658,14 +798,37 @@ const UrunFormModal: React.FC<UrunFormModalProps> = ({ isOpen, onClose, onSave, 
           />
         </div>
         <div>
-          <label className="block text-sm font-medium mb-1" style={{ color: renkler.anaYazi }}>Resim URL</label>
-          <input 
-            type="url" 
-            value={resim} 
-            onChange={(e) => setResim(e.target.value)} 
-            placeholder="https://example.com/resim.jpg" 
-            className="w-full p-2 border rounded-md" 
-          />
+          <label className="block text-sm font-medium mb-1" style={{ color: renkler.anaYazi }}>Ürün Resimleri</label>
+          <div className="space-y-3">
+            {/* Mevcut resimler */}
+            {resimler.length > 0 && (
+              <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
+                {resimler.map((resim, index) => (
+                  <div key={index} className="relative">
+                    <img src={resim} alt={`Resim ${index + 1}`} className="w-full h-24 object-cover rounded-lg" />
+                    <button
+                      type="button"
+                      onClick={() => resimSil(index)}
+                      className="absolute top-1 right-1 bg-red-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-xs hover:bg-red-600"
+                    >
+                      ×
+                    </button>
+                  </div>
+                ))}
+              </div>
+            )}
+            {/* Yeni resim ekleme */}
+            <div className="flex gap-2">
+              <input 
+                type="url" 
+                value={yeniResimUrl} 
+                onChange={(e) => setYeniResimUrl(e.target.value)} 
+                placeholder="https://example.com/resim.jpg" 
+                className="flex-1 p-2 border rounded-md" 
+              />
+              <Buton onClick={resimEkle} type="button" className="!px-4">Ekle</Buton>
+            </div>
+          </div>
         </div>
         <div className="flex justify-end space-x-3">
           <Buton variant="secondary" onClick={onClose}>İptal</Buton>
@@ -772,6 +935,7 @@ const FavoriUrunlerPage: React.FC = () => {
     const [duzenlenenUrun, setDuzenlenenUrun] = useState<Urun | null>(null);
     const [mevcutSayfa, setMevcutSayfa] = useState(1);
     const sayfaBasina = 12;
+    const [zamanPlani, setZamanPlani] = useState<'hepsi' | 'bu-ay' | 'bu-yil' | 'alınacaklar' | 'ihtiyaç'>('hepsi');
 
     const kategoriler = useMemo(() => ['hepsi', ...Array.from(new Set(urunler.map(p => p.kategori)))], [urunler]);
 
@@ -782,9 +946,10 @@ const FavoriUrunlerPage: React.FC = () => {
             const fiyatUygun = p.fiyat >= fiyatMin && p.fiyat <= fiyatMax;
             const tercihUygun = !tercihEdilenler || !!p.tercihEdilen;
             const sepetUygun = secilenSepet === 'hepsi' || sepetler.find(s => s.id === secilenSepet)?.urunler.includes(p.id);
-            return aramaUygun && kategoriUygun && fiyatUygun && tercihUygun && sepetUygun;
+            const zamanPlaniUygun = zamanPlani === 'hepsi' || p.zamanPlanlamasi === zamanPlani;
+            return aramaUygun && kategoriUygun && fiyatUygun && tercihUygun && sepetUygun && zamanPlaniUygun;
         });
-    }, [arama, kategori, fiyatMin, fiyatMax, tercihEdilenler, secilenSepet, urunler, sepetler]);
+    }, [arama, kategori, fiyatMin, fiyatMax, tercihEdilenler, secilenSepet, urunler, sepetler, zamanPlani]);
     
     const sayfaliUrunler = useMemo(() => {
         const baslangic = (mevcutSayfa - 1) * sayfaBasina;
@@ -794,7 +959,7 @@ const FavoriUrunlerPage: React.FC = () => {
     // Filtre değiştiğinde sayfa 1'e dön
     useEffect(() => {
         setMevcutSayfa(1);
-    }, [arama, kategori, fiyatMin, fiyatMax, tercihEdilenler, secilenSepet]);
+    }, [arama, kategori, fiyatMin, fiyatMax, tercihEdilenler, secilenSepet, zamanPlani]);
     
     const detayTikla = (urun: Urun) => {
         setSeciliUrun(urun);
@@ -875,6 +1040,21 @@ const FavoriUrunlerPage: React.FC = () => {
       setDuzenlenenUrun(null);
     };
 
+    // Autocomplete state and logic (FavoriUrunlerPage component içinde):
+    const [autocompleteOpen, setAutocompleteOpen] = useState(false);
+    const autocompleteOptions = useMemo(() => {
+      if (!arama) return [];
+      const isimler = urunler
+        .map(u => u.isim)
+        .filter(isim => isim.toLowerCase().includes(arama.toLowerCase()));
+      const etiketler = urunler
+        .flatMap(u => u.etiketler)
+        .filter((etiket, i, arr) =>
+          etiket.toLowerCase().includes(arama.toLowerCase()) && arr.indexOf(etiket) === i
+        );
+      return [...isimler, ...etiketler].slice(0, 10);
+    }, [arama, urunler]);
+
     return (
         <div className="space-y-6">
             <div className="flex flex-wrap items-center justify-between gap-4 mb-2">
@@ -885,41 +1065,92 @@ const FavoriUrunlerPage: React.FC = () => {
 
             {/* Filtreleme Alanı */}
             <Kart baslik="Filtrele" headerAction={<Buton variant="secondary" onClick={() => {setArama(''); setKategori('hepsi'); setTercihEdilenler(false); setSecilenSepet('hepsi'); setFiyatMin(minFiyat); setFiyatMax(maxFiyat);}} className="">Temizle</Buton>}>
-                <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+                <div className="grid grid-cols-1 md:grid-cols-6 gap-4">
                     {/* Arama */}
                     <div className="relative">
-                        <input type="text" placeholder="Ürün ara..." value={arama} onChange={e => setArama(e.target.value)} className="w-full p-2 pl-10 border rounded-md"/>
+                        <input
+                          type="text"
+                          placeholder="Ürün veya etiket ara..."
+                          value={arama}
+                          onChange={e => setArama(e.target.value)}
+                          className="w-full p-2 pl-10 border rounded-md"
+                          autoComplete="off"
+                          onFocus={() => setAutocompleteOpen(true)}
+                          onBlur={() => setTimeout(() => setAutocompleteOpen(false), 150)}
+                        />
                         <FiSearch className="absolute left-3 top-1/2 -translate-y-1/2" size={18} style={{color: renkler.acikYazi}} />
-                    </div>
+                        {autocompleteOpen && arama.length > 0 && (
+                          <div className="absolute z-20 left-0 right-0 mt-1 bg-white border rounded shadow-lg max-h-56 overflow-auto">
+                            {autocompleteOptions.length > 0 ? (
+                              autocompleteOptions.map((option, idx) => (
+                                <button
+                                  key={option + idx}
+                                  type="button"
+                                  className="w-full text-left px-4 py-2 hover:bg-gray-100 text-sm"
+                                  onMouseDown={() => {
+                                    setArama(option);
+                                    setAutocompleteOpen(false);
+                                  }}
+                                >
+                                  {option}
+                                </button>
+                              ))
+                            ) : (
+                              <div className="px-4 py-2 text-gray-400 text-sm">Sonuç bulunamadı</div>
+                            )}
+                          </div>
+                        )}
+                      </div>
                     {/* Kategori */}
                     <select value={kategori} onChange={e => setKategori(e.target.value)} className="w-full p-2 border rounded-md bg-white">
                         {kategoriler.map(cat => <option key={cat} value={cat}>{cat === 'hepsi' ? 'Tüm Kategoriler' : cat}</option>)}
+                    </select>
+                    {/* Sepet */}
+                    <select value={secilenSepet} onChange={e => setSecilenSepet(e.target.value)} className="w-full p-2 border rounded-md bg-white">
+                        <option value="hepsi">Tüm Sepetler</option>
+                        {sepetler.map(sepet => <option key={sepet.id} value={sepet.id}>{sepet.isim}</option>)}
+                    </select>
+                    {/* Fiyat Aralığı */}
+                    <div className="flex flex-col justify-center">
+                        <label className="mb-1 text-sm font-medium">Fiyat Aralığı</label>
+                        <div className="col-span-2 flex items-center">
+                            <input
+                                type="range"
+                                min={minFiyat}
+                                max={fiyatMax}
+                                value={fiyatMin}
+                                onChange={e => setFiyatMin(Math.min(Number(e.target.value), fiyatMax - 1))}
+                                className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer mr-2"
+                                style={{'--thumb-color': renkler.buton} as any}
+                            />
+                            <input
+                                type="range"
+                                min={fiyatMin + 1}
+                                max={maxFiyat}
+                                value={fiyatMax}
+                                onChange={e => setFiyatMax(Math.max(Number(e.target.value), fiyatMin + 1))}
+                                className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer"
+                                style={{'--thumb-color': renkler.buton} as any}
+                            />
+                        </div>
+                        <div className="flex justify-between text-xs text-gray-500 mt-1">
+                            <span>Min: {fiyatMin.toLocaleString('tr-TR')} ₺</span>
+                            <span>Max: {fiyatMax.toLocaleString('tr-TR')} ₺</span>
+                        </div>
+                    </div>
+                    {/* Zaman Planı */}
+                    <select value={zamanPlani} onChange={e => setZamanPlani(e.target.value as any)} className="w-full p-2 border rounded-md bg-white">
+                        <option value="hepsi">Tüm Zaman Planları</option>
+                        <option value="bu-ay">Bu Ay Al</option>
+                        <option value="bu-yil">Bu Yıl Al</option>
+                        <option value="alınacaklar">Alınacaklar</option>
+                        <option value="ihtiyaç">İhtiyaç</option>
                     </select>
                     {/* Tercih Edilenler */}
                     <label className="flex items-center gap-2 bg-gray-50 rounded-md px-3 py-2 cursor-pointer select-none">
                         <input type="checkbox" checked={tercihEdilenler} onChange={e => setTercihEdilenler(e.target.checked)} className="form-checkbox h-5 w-5 text-yellow-500" />
                         <span>Tercih Edilenler</span>
                     </label>
-                    {/* Sepete Göre Filtrele */}
-                    <select value={secilenSepet} onChange={e => setSecilenSepet(e.target.value)} className="w-full p-2 border rounded-md bg-white">
-                        <option value="hepsi">Tüm Sepetler</option>
-                        {sepetler.map(sepet => <option key={sepet.id} value={sepet.id}>{sepet.isim}</option>)}
-                    </select>
-                </div>
-                {/* Fiyat Aralığı */}
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-4">
-                    <div className="flex flex-col">
-                        <label className="mb-1 text-sm font-medium">Min Fiyat</label>
-                        <input type="number" min={minFiyat} max={fiyatMax} value={fiyatMin} onChange={e => setFiyatMin(Number(e.target.value))} className="w-full p-2 border rounded-md" />
-                    </div>
-                    <div className="flex flex-col">
-                        <label className="mb-1 text-sm font-medium">Max Fiyat</label>
-                        <input type="number" min={fiyatMin} max={maxFiyat} value={fiyatMax} onChange={e => setFiyatMax(Number(e.target.value))} className="w-full p-2 border rounded-md" />
-                    </div>
-                    <div className="col-span-2 flex items-center">
-                        <input type="range" min={minFiyat} max={maxFiyat} value={fiyatMin} onChange={e => setFiyatMin(Number(e.target.value))} className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer mr-2" />
-                        <input type="range" min={minFiyat} max={maxFiyat} value={fiyatMax} onChange={e => setFiyatMax(Number(e.target.value))} className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer" />
-                    </div>
                 </div>
             </Kart>
 
